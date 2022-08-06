@@ -1,0 +1,165 @@
+.btn--white {
+  @media only screen and (max-width: $bp-small) {
+    font-size: 2.2rem;
+    font-weight: 400;
+    border: #eb699e solid 0.3rem;
+  }
+  font-weight: 300;
+  font-size: 1.7rem;
+  color: $color-logo;
+  list-style-type: none;
+  text-decoration: none;
+  border: #eb699e solid 0.2rem;
+  padding: 1.3rem 5rem;
+  display: inline-block;
+  text-align: center;
+  align-content: start;
+  text-align: center;
+  transition: ease-in all 0.5s;
+  &:hover {
+    background: #fff;
+    color: #eb699e;
+    transition: ease-in all 0.5s;
+  }
+}
+
+.btn--dark {
+  @media only screen and (max-width: $bp-small) {
+    font-size: 2.2rem;
+    border: #eb699e solid 0.3rem;
+  }
+  font-weight: 300;
+  font-size: 1.7rem;
+  color: $color-logo;
+  list-style-type: none;
+  text-decoration: none;
+  border: #eb699e solid 0.2rem;
+  padding: 1.3rem 5rem;
+  display: inline-block;
+  text-align: center;
+  align-content: start;
+  text-align: center;
+  transition: ease-in all 0.5s;
+  &:hover {
+    background: #000;
+    color: #fff;
+    transition: ease-in all 0.5s;
+  }
+}
+
+.btn--contact {
+  cursor: pointer;
+  border: 0;
+  font-size: 1.7rem;
+  transition: ease-in all 0.5s;
+  background-color: #efb68d;
+  color: #fff;
+  padding: 2rem 0rem;
+  margin: 0 auto;
+  max-width: 20rem;
+  width: 100%;
+  display: block;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 3.5rem;
+  &:hover {
+    background-color: #000;
+    transition: ease-in all 0.5s;
+    color: #fff;
+  }
+}
+
+.btn--email {
+  cursor: pointer;
+  font-size: 1.7rem;
+  transition: ease-in all 0.5s;
+  background-color: #efb68d;
+  color: #fff;
+  max-width: 19.2rem;
+  width: 100%;
+  display: block;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 3.5rem;
+  border: #fff solid 4px;
+  margin-left: -4.5rem;
+  &:hover {
+    background-color: #eb699e;
+    transition: ease-in all 0.5s;
+    color: #fff;
+  }
+}
+
+//////////////////////
+/// button in pure css
+
+.search-box {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.input-search {
+  @media only screen and (max-width: $bp-small) {
+    font-size: 3rem;
+  }
+  height: 5rem;
+  width: 5rem;
+  border-style: none;
+  padding: 1rem;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 2.5rem;
+  transition: all 0.5s ease-in-out;
+  background-color: transparent;
+  padding-right: 4rem;
+  color: #000;
+}
+.input-search::placeholder {
+  @media only screen and (max-width: $bp-small) {
+    font-size: 3rem;
+  }
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search {
+  @media only screen and (max-width: $bp-small) {
+    font-size: 4rem;
+    height: 0;
+  }
+  width: 5rem;
+  height: 5rem;
+  border-style: none;
+  font-size: 2rem;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color: $color-logo;
+  background-color: transparent;
+  pointer-events: painted;
+}
+.btn-search:focus ~ .input-search {
+  @media only screen and (max-width: $bp-small) {
+    width: 60rem;
+  }
+  width: 30rem;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+.input-search:focus {
+  @media only screen and (max-width: $bp-small) {
+    width: 60rem;
+  }
+  width: 30rem;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}

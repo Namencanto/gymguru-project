@@ -1,0 +1,164 @@
+.opinion {
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: 20rem 35rem 35rem 20rem;
+  }
+  background-image: url(../images/cli.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-row: 5 / 6;
+  display: grid;
+  grid-template-columns: 1fr 20rem 70rem 20rem 1fr;
+  grid-template-rows: 25rem 18rem 35rem;
+
+  &__text {
+    @media only screen and (max-width: $bp-small) {
+      grid-column: 1 / 5;
+      & h2 {
+        margin: 0 !important ;
+        font-size: 7rem !important;
+      }
+      & p {
+        font-size: 3.5rem !important;
+        margin: 0 auto 0 auto;
+        max-width: 92rem;
+      }
+    }
+    text-align: center;
+    grid-row: 1;
+    grid-column: 2 / 5;
+
+    & h2 {
+      color: $color-primary;
+      margin: 9rem 0 2rem 0;
+      font-size: 4.5rem;
+    }
+
+    & p {
+      color: $color-primary;
+      font-size: 1.7rem;
+      font-weight: 300;
+    }
+  }
+
+  &__carousel {
+    @media only screen and (max-width: $bp-small) {
+      grid-column: 1 / 5;
+      margin: 0 5rem 0 5rem;
+    }
+    grid-row: 2;
+    grid-column: 3 / 4;
+
+    &-inner {
+      @media only screen and (max-width: $bp-small) {
+        height: 200%;
+      }
+      height: 100%;
+      margin: auto;
+      position: relative;
+
+      overflow: hidden;
+      &-item {
+        transition: transform 0.5s;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        background-color: #fff;
+        align-items: center;
+        padding: 3rem 2.5rem;
+
+        & h4 {
+          @media only screen and (max-width: $bp-small) {
+            font-size: 5rem;
+            margin-top: 1.5rem;
+          }
+          text-align: center;
+          font-size: 2.1rem;
+          color: #3c3c3d;
+          line-height: 1.8rem;
+          font-weight: 600;
+        }
+        & p {
+          @media only screen and (max-width: $bp-small) {
+            font-size: 3.2rem;
+            margin-top: 4rem;
+            line-height: 5rem;
+          }
+          text-align: center;
+          font-size: 1.7rem;
+          margin-top: 2rem;
+          line-height: 2.8rem;
+          color: #3c3c3d;
+        }
+      }
+    }
+
+    &-prev {
+      @media only screen and (max-width: $bp-small) {
+        z-index: 10;
+        grid-row: 2;
+        grid-column: 1 / 3;
+        height: 150%;
+        margin: 0 7.5rem 0 5rem;
+      }
+      grid-column: 2;
+    }
+    &-next {
+      @media only screen and (max-width: $bp-small) {
+        z-index: 10;
+        grid-row: 2;
+        grid-column: 3 / 5;
+        height: 150%;
+        margin: 0 5rem 0 7.5rem;
+      }
+      grid-column: 4;
+    }
+
+    &-dots {
+      @media only screen and (max-width: $bp-small) {
+        grid-row: 2 / 4;
+        grid-column: 2 / 4;
+        margin: 40rem auto 0 auto;
+        z-index: 50;
+      }
+      grid-row: 3;
+      grid-column: 3;
+      margin: 2.5rem auto 0 auto;
+      & button {
+        @media only screen and (max-width: $bp-small) {
+          width: 5rem;
+          height: 5rem;
+          border-radius: 2.5rem;
+          &:nth-last-child(-n + 2) {
+            margin-left: 2rem;
+          }
+        }
+        cursor: pointer;
+        width: 2rem;
+        height: 2rem;
+        background: #f2e0ab;
+        border-radius: 1rem;
+        border: none;
+      }
+    }
+  }
+}
+
+// .item {
+//   &-1 {
+//   }
+//   &-2 {
+//     transform: translateX(-100%);
+//   }
+//   &-3 {
+//     transform: translateX(-200%);
+//   }
+// }
+
+// for javascript
+// .active {
+//   transition: transform 0.5s;
+// }
+.dots-active {
+  background-color: #eb699e !important;
+}

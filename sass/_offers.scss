@@ -1,0 +1,98 @@
+.offers {
+  @media only screen and (max-width: $bp-largest) {
+    grid-template-columns: 1fr 55vw 1fr;
+  }
+  @media only screen and (max-width: $bp-large) {
+    grid-template-columns: 1fr 80vw 1fr;
+  }
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: 1fr minmax(80rem, 120vw) 1fr;
+  }
+  background-color: #fff;
+  grid-row: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr 42vw 1fr;
+  &__container {
+    @media only screen and (max-width: $bp-medium) {
+      & h2 {
+        font-size: 5.4rem !important;
+      }
+      & span {
+        font-size: 2.04rem !important;
+      }
+      & a {
+        margin-top: 2rem;
+        transform: scale(1.25);
+      }
+      @media only screen and (max-width: $bp-small) {
+        grid-column: 2 / 3;
+
+        & h2 {
+          font-size: 7rem !important;
+        }
+        & span {
+          font-size: 2.8rem !important;
+        }
+        & a {
+          margin-top: 3rem;
+          transform: scale(1.75);
+        }
+      }
+    }
+    margin-top: 7.5rem;
+    grid-column: 2;
+    text-align: center;
+    & h2 {
+      font-weight: 500;
+      color: #262626;
+      font-size: 4.5rem;
+    }
+    & span {
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: $color-logo;
+    }
+  }
+  &__box {
+    & h4 {
+      margin-top: 1.5rem;
+      font-weight: 500;
+    }
+    margin-top: 6rem;
+    display: flex;
+    margin-bottom: 2.5rem;
+    justify-content: center;
+    font-weight: 200;
+    &-1 {
+      flex: 0 0 33.333333%;
+      max-width: 33.33333333%;
+      box-shadow: #ddd 0px 0px 10px 0px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 60px 0;
+      margin-right: 3rem;
+    }
+
+    &-2 {
+      flex: 0 0 33.333333%;
+      max-width: 33.33333333%;
+      box-shadow: #ddd 0px 0px 10px 0px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 60px 0;
+      margin-right: 3rem;
+    }
+
+    &-3 {
+      flex: 0 0 33.333333%;
+      max-width: 33.33333333%;
+      box-shadow: #ddd 0px 0px 10px 0px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 60px 0;
+    }
+  }
+}
