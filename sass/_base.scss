@@ -30,6 +30,7 @@ a {
 }
 
 html {
+  scroll-behavior: smooth;
   box-sizing: border-box;
   font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
 
@@ -59,7 +60,7 @@ body {
   }
   @media only screen and (max-width: $bp-small) {
     grid-template-rows:
-      115rem 85rem 80rem
+      125rem 85rem 80rem
       107.5rem 75rem 75rem;
   }
   //   [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr)
@@ -80,4 +81,12 @@ body {
   // @media only screen and (max-width: $bp-medium) {
   //   grid-template-rows: 6rem calc(100vh - 6rem);
   // }
+}
+
+.about-page {
+  // display: grid;
+
+  // grid-template-rows: min-content 100rem;
+  font-size: 2rem;
+  background-color: #f2daac;
 }

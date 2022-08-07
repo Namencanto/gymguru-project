@@ -17,38 +17,19 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
+    <link rel="icon" href="icon/dumbbell.png" type="image/icon type" />
+
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
     <!-- type="module" -->
 
     <script defer src="js/slider.js"></script>
+    <script src="https://unpkg.com/htmlincludejs"></script>
     <title>GymGuru &mdash; your best gym</title>
   </head>
   <body class="container">
     <main class="container-main">
-      <header class="header">
-        <h2 class="header__logo"><a href="#">GymGuru</a></h2>
-        <ul class="header__navbar">
-          <li class="navbar-item">
-            <a href="#">Contact us</a>
-          </li>
-          <li class="navbar-item"><a href="#">Login</a></li>
-          <li class="navbar-item"><a href="#">Register</a></li>
-        </ul>
-
-        <div class="header__sign-btn search-box">
-          <button class="header__sign-btn-search btn-search">
-            <i class="fa fa-search"></i>
-          </button>
-          <input
-            type="text"
-            class="header__sign-btn-input-search input-search"
-            placeholder="TYPE TO SEARCH..."
-          />
-
-          <!-- <a href="#"><i class="fa fa-search"></i></a> -->
-        </div>
-      </header>
+      <include src="otherhtml/header.html"></include>
 
       <section class="banner">
         <article class="banner-main">
@@ -119,7 +100,7 @@
       </div>
     </section>
 
-    <section class="contact">
+    <section id="contact" class="contact">
       <div class="contact__text">
         <h2>Request a call back</h2>
         <p>
