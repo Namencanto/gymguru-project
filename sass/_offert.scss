@@ -1,0 +1,206 @@
+.offert {
+  display: grid;
+  grid-template-rows: repeat(7, 15rem);
+  grid-template-columns: repeat(6, 1fr);
+
+  &__boxes {
+    @media only screen and (max-width: $bp-large) {
+      grid-row: 2 / 10;
+      grid-column: 1 / 7;
+      margin: 2.5rem;
+      @media only screen and (max-width: $bp-medium) {
+        grid-row: 1 / 10;
+
+        box-shadow: none;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: auto;
+      }
+    }
+
+    box-shadow: 0px 0px 20px -5px rgba(66, 68, 90, 0.5);
+    grid-row: 2 / 9;
+    grid-column: 2 / 6;
+    background-color: #fff;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: min-content 5rem 1fr;
+
+    justify-items: center;
+
+    & h1 {
+      @media only screen and (max-width: $bp-medium) {
+        text-align: center;
+        line-height: 4rem;
+        padding: 0rem 4rem 4rem 4rem;
+        margin: 1rem -2.5rem 1rem -2.5rem;
+      }
+      grid-column: 1 / 4;
+      padding: 5rem;
+
+      font-size: 4rem;
+      line-height: 2rem;
+    }
+  }
+
+  &__box {
+    @media only screen and (max-width: $bp-medium) {
+      margin-bottom: 2.5rem;
+    }
+    grid-row: 3;
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background: #fff;
+    flex: 0 0 26%;
+    flex-direction: column;
+
+    font-size: 1rem;
+    &-label {
+      width: 100%;
+      text-align: center;
+      background: #f67c00;
+      color: #fff;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-title {
+      width: 100%;
+      text-align: center;
+      border-bottom: 2px solid #f67c00;
+      padding: 3.5rem 1rem;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      height: 9rem;
+      text-transform: uppercase;
+      & h2 {
+        font-weight: 400;
+        font-size: 2.2rem;
+      }
+      & h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        font-weight: normal;
+      }
+    }
+    &-price {
+      padding: 1rem;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #eee;
+      height: 11rem;
+
+      &-top {
+        display: flex;
+        align-items: center;
+
+        & p:nth-child(1) {
+          color: #f67c00;
+          font-size: 4rem;
+          line-height: 1;
+          font-weight: 500;
+        }
+      }
+
+      &-monthly {
+        & p:nth-child(1) {
+          font-size: 1.1rem;
+          color: #000;
+        }
+        display: flex;
+        flex-direction: column;
+        color: #000;
+        font-size: 1.3rem;
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: 10px;
+        line-height: 1.2;
+      }
+      &-sum {
+        font-weight: 500;
+        font-size: 1.4rem;
+        color: #ccc;
+      }
+    }
+    &-content {
+      display: flex;
+      padding: 0.5vw;
+      justify-content: center;
+      font-size: 1.4rem;
+      &-ul-3 {
+        max-width: 90%;
+        transform: translateX(1rem);
+      }
+
+      & ul {
+        @media only screen and (max-width: $bp-medium) {
+          margin-left: 4rem !important;
+          max-width: 100%;
+          transform: translateX(0);
+        }
+
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        margin-left: 2rem;
+        & li {
+          position: relative;
+          font-size: 1.6rem;
+          list-style-type: none;
+          &::before {
+            content: "\f058";
+            font-weight: 300;
+            margin-right: 0.8rem;
+            font-display: swap;
+            color: #bbb;
+            position: absolute;
+            left: -2.5rem;
+            font-family: "Font Awesome 5 Free";
+          }
+        }
+      }
+    }
+    &-footer {
+      @media only screen and (max-width: $bp-medium) {
+        margin-top: 4rem;
+      }
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: auto;
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.feature {
+  @media only screen and (max-width: $bp-medium) {
+    box-shadow: none;
+    transform: scale(1);
+  }
+  box-shadow: 0px 0px 30px 0px rgba(66, 68, 90, 0.1);
+  transform: scale(1.1);
+  & li {
+    &::before {
+      font-weight: bold !important;
+      color: #f67c00 !important;
+    }
+  }
+}
