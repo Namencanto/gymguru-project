@@ -30,5 +30,5 @@ app.get("/offert", function (req, res) {
 //   res.render("pages/about");
 // });
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
 console.log("Server is listening on port 8080");
