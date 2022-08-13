@@ -1,0 +1,172 @@
+<!-- LOGIN  -->
+
+<div id="wrap" class="input">
+  <div class="login hidden">
+    <header class="input-header">
+      <h1>Welcome back!</h1>
+    </header>
+
+    <section class="input-content">
+      <div class="input-button-box">
+        <button class="input-button-box-btn input-button-box-login">
+          Login
+        </button>
+        <button class="input-button-box-btn input-button-box-signup btn-active">
+          Sign up
+        </button>
+      </div>
+
+      <!-- <h2>Login</h2> -->
+      <div class="input-content-wrap">
+        <dl class="inputbox">
+          <dd class="inputbox-content">
+            <input
+              id="login-input-email"
+              type="text"
+              required
+              placeholder=" "
+            />
+            <label for="login-input-email">E-mail</label>
+            <span class="underline"></span>
+          </dd>
+        </dl>
+        <dl class="inputbox">
+          <dd class="inputbox-content">
+            <input id="input1" type="password" required placeholder=" " />
+            <label for="input1">Password</label>
+            <span class="underline"></span>
+          </dd>
+
+          <div class="inputbox-remember">
+            <input id="input11" type="checkbox" />
+            <label for="input11">Remember Me</label>
+          </div>
+        </dl>
+        <div class="btns">
+          <button class="btn btn-confirm">Log In</button>
+          <button class="btn btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--  -->
+  <!-- SIGN UP -->
+  <!--  -->
+  <div class="signup hidden">
+    <header class="input-header">
+      <h1>Join to us!</h1>
+    </header>
+
+    <section class="input-content">
+      <div class="input-button-box">
+        <button class="input-button-box-btn input-button-box-login">
+          Login
+        </button>
+        <button class="input-button-box-btn input-button-box-signup btn-active">
+          Sign up
+        </button>
+      </div>
+
+      <!-- <h2>Login</h2> -->
+      <div class="input-content-wrap">
+        <dl class="inputbox">
+          <dd class="inputbox-content">
+            <input
+              id="signup-input-email"
+              type="text"
+              required
+              placeholder=" "
+            />
+            <label for="signup-input-email">E-mail</label>
+            <span class="underline"></span>
+          </dd>
+        </dl>
+        <dl class="inputbox">
+          <dd class="inputbox-content">
+            <input id="input2" type="password" required placeholder=" " />
+            <label for="input2">Password</label>
+            <span class="underline"></span>
+          </dd>
+        </dl>
+        <dl class="inputbox">
+          <dd class="inputbox-content">
+            <input id="input3" type="password" required placeholder=" " />
+            <label for="input3">Confirm password</label>
+            <span class="underline"></span>
+          </dd>
+        </dl>
+        <dl class="inputbox">
+          <dd class="inputbox-content">
+            <input
+              id="input4"
+              type="tel"
+              pattern="[+][0-9]{2} [0-9]{9}"
+              placeholder=" "
+            />
+            <label for="input4">Phone Number</label>
+            <span class="underline"></span>
+          </dd>
+          <small>Format: +48 123456789</small>
+        </dl>
+
+        <dl class="inputbox">
+          <div class="inputbox-radio-container">
+            <span>Gender: <br /></span>
+            <input id="Male" type="radio" required name="radio" />
+            <label for="Male">Male</label>
+            <input id="Female" type="radio" required name="radio" />
+            <label for="Female">Female</label>
+            <input id="Other" type="radio" required name="radio" />
+            <label for="Other">Other</label>
+          </div>
+        </dl>
+
+        <dl class="inputbox">
+          <div class="inputbox-birth">
+            <span>Birth date:</span>
+            <!-- <label>DD</label> -->
+            <input
+              type="text"
+              pattern="[0-9]*"
+              maxlength="2"
+              size="2"
+              class="date-field"
+              placeholder="DD"
+            />
+          </div>
+          /
+          <div class="inputbox-birth">
+            <!-- <label>MM</label> -->
+            <input
+              type="text"
+              pattern="[0-9]*"
+              maxlength="2"
+              size="2"
+              class="date-field"
+              placeholder="MM"
+            />
+          </div>
+          /
+          <div class="inputbox-birth">
+            <!-- <label>YYYY</label> -->
+            <input
+              type="text"
+              pattern="[0-9]*"
+              maxlength="4"
+              size="4"
+              class="date-field date-field--year"
+              placeholder="YYYY"
+            />
+          </div>
+          <p><small>E.g. 26/04/1980</small></p>
+        </dl>
+        <div class="btns">
+          <button class="btn btn-confirm">Log In</button>
+          <button class="btn btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- LOGIN END -->

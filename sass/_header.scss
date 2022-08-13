@@ -9,7 +9,7 @@
   padding: 1rem 4rem 0 4rem;
   &__logo {
     @media only screen and (max-width: $bp-medium) {
-      font-size: 6.5rem;
+      font-size: 5rem;
 
       @media only screen and (max-width: $bp-small) {
         margin: auto;
@@ -33,7 +33,7 @@
       @media only screen and (max-width: $bp-large) {
         font-size: 1.8rem;
         @media only screen and (max-width: $bp-medium) {
-          font-size: 3rem;
+          font-size: 2rem;
           @media only screen and (max-width: $bp-small) {
             font-size: 5rem;
             margin-bottom: 2rem;

@@ -1,33 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Secular+One&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-
-    <link rel="icon" href="fa-solid fa-dumbbell" type="image/icon type" />
-
-    <link rel="stylesheet" href="css/style.css" />
-
-    <link rel="icon" href="icon/dumbbell.png" type="image/icon type" />
-    <title>GymGuru &mdash; contact</title>
-    <script src="https://unpkg.com/htmlincludejs"></script>
-  </head>
+<%- include('../partials/head'); %>
   <body class="about-page">
-    <div class="about__header">
-      <include src="otherhtml/header.html"></include>
-    </div>
+    <div class="about__header"><%- include('../partials/header'); %></div>
     <main class="about">
       <div class="about__container">
         <div class="about__container-maintext">

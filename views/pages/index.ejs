@@ -1,35 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Secular+One&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-
-    <link rel="icon" href="icon/dumbbell.png" type="image/icon type" />
-
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
-    <!-- type="module" -->
-
-    <script defer src="js/slider.js"></script>
-    <script src="https://unpkg.com/htmlincludejs"></script>
-    <title>GymGuru &mdash; your best gym</title>
-  </head>
+<%- include('../partials/head'); %>
   <body class="container">
     <main class="container-main">
-      <include src="otherhtml/header.html"></include>
+    <%- include('../partials/login'); %>
+
+   
+      <%- include('../partials/header'); %>
 
       <section class="banner">
         <article class="banner-main">
@@ -42,10 +17,10 @@
             distribution of letters, as opposed to using 'Content here, content
             here', making it
           </p>
-          <a class="btn--white" href="gym-offert.html">Read More</a>
+          <a class="btn--white" href="/offert">Read More</a>
         </article>
         <figure class="banner__imgbox">
-          <img src="images/toy_img.png" alt="guy doing workout" />
+          <img src="/assets/images/toy_img.png" alt="guy doing workout" />
         </figure>
       </section>
     </main>
@@ -56,7 +31,7 @@
         <span>CHECKOUT OUR FITNESS CLASESS</span>
         <div class="offers__box">
           <div class="offers__box-1">
-            <i><img src="icon/icon1.png" alt="heavy weight class icon" /></i>
+            <i><img src="assets/icon/icon1.png" alt="heavy weight class icon" /></i>
             <h4>
               HEAVY WEIGHT
               <br />
@@ -64,7 +39,7 @@
             </h4>
           </div>
           <div class="offers__box-2">
-            <i><img src="icon/icon2.png" alt="body building class icon" /></i>
+            <i><img src="assets/icon/icon2.png" alt="body building class icon" /></i>
             <h4>
               BODY BUILDING
               <br />
@@ -72,7 +47,7 @@
             </h4>
           </div>
           <div class="offers__box-3">
-            <i><img src="icon/icon3.png" alt="weight loss class icon" /></i>
+            <i><img src="assets/icon/icon3.png" alt="weight loss class icon" /></i>
             <h4>
               WEIGHT LOSS
               <br />
@@ -123,7 +98,7 @@
           </form>
         </div>
         <figure>
-          <img src="images/img.jpg" alt="workout image" />
+          <img src="/assets/images/img.jpg" alt="workout image" />
         </figure>
       </div>
     </section>
@@ -211,16 +186,3 @@
     </section>
   </body>
 </html>
-
-<!-- <div class="opinion__carousel">
-  <div class="opinion__carousel-inner">
-    <div class="opinion__carousel-inner-container">
-      <div class="opinion__carousel-inner-container-item-1"></div>
-    </div>
-    <div class="opinion__carousel-inner-container">
-      <div class="opinion__carousel-inner-container-item-1"></div>
-    </div>
-    <div class="opinion__carousel-inner-container">
-      <div class="opinion__carousel-inner-container-item-1"></div>
-    </div>
-  </div> -->

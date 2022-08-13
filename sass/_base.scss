@@ -55,7 +55,7 @@ body {
 
   @media only screen and (max-width: $bp-largest) {
     grid-template-rows:
-      110rem 77.5rem 70rem
+      116.5rem 77.5rem 70rem
       83rem 57rem 65rem;
   }
   @media only screen and (max-width: $bp-small) {
@@ -63,38 +63,13 @@ body {
       125rem 85rem 80rem
       107.5rem 75rem 75rem;
   }
-  //   [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr)
-  //   [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
-  //   [center-end] minmax(6rem, 1fr)
-  //   [full-end];
-
-  // @media only screen and (max-width: $bp-large) {
-  //   grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
-  //   grid-template-columns:
-  //     [full-start] minmax(6rem, 1fr) [center-start] repeat(
-  //       8,
-  //       [col-start] minmax(min-content, 14rem) [col-end]
-  //     )
-  //     [center-end] minmax(6rem, 1fr) [full-end];
-  // }
-
-  // @media only screen and (max-width: $bp-medium) {
-  //   grid-template-rows: 6rem calc(100vh - 6rem);
-  // }
 }
 
 .about-page {
-  // display: grid;
-
-  // grid-template-rows: min-content 100rem;
   font-size: 2rem;
   background-color: #f2daac;
 }
 
 .offert-page {
-  // background-image: url(https://dietetykanienazarty.pl/images/bg-offer.jpg);
-  // background-size: 100% 100%;
-  // background-repeat: no-repeat;
-  // margin: auto;
   background-color: #f2daac;
 }
