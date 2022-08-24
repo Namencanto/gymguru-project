@@ -20,11 +20,13 @@
       <div class="input-content-wrap">
         <dl class="inputbox">
           <dd class="inputbox-content">
+            <form name="login" action="/users/login" method="post">
             <input
               id="login-input-email"
-              type="text"
+              type="email"
               required
               placeholder=" "
+              name="email"
             />
             <label for="login-input-email">E-mail</label>
             <span class="underline"></span>
@@ -32,18 +34,19 @@
         </dl>
         <dl class="inputbox">
           <dd class="inputbox-content">
-            <input id="input1" type="password" required placeholder=" " />
-            <label for="input1">Password</label>
-            <span class="underline"></span>
+            <input id="login-input-password" type="password" required placeholder=" " name="password"/>
+            <label for="login-input-password">Password</label>
+            <span class="underline underline-password"></span>
           </dd>
 
           <div class="inputbox-remember">
-            <input id="input11" type="checkbox" />
-            <label for="input11">Remember Me</label>
+            <input id="login-checkbox-remember" type="checkbox" />
+            <label for="login-checkbox-remember">Remember Me</label>
           </div>
         </dl>
         <div class="btns">
-          <button class="btn btn-confirm">Log In</button>
+          <button name="submit" type="submit" class="btn btn-confirm">Log In</button>
+        </form>
           <button class="btn btn-cancel">Cancel</button>
         </div>
       </div>
@@ -71,11 +74,13 @@
       <div class="input-content-wrap">
         <dl class="inputbox">
           <dd class="inputbox-content">
+            <form action="/users/register" method="post">
             <input
               id="signup-input-email"
-              type="text"
+              type="email"
               required
               placeholder=" "
+              name="email"
             />
             <label for="signup-input-email">E-mail</label>
             <span class="underline"></span>
@@ -83,27 +88,28 @@
         </dl>
         <dl class="inputbox">
           <dd class="inputbox-content">
-            <input id="input2" type="password" required placeholder=" " />
-            <label for="input2">Password</label>
-            <span class="underline"></span>
+            <input id="register-input-password" type="password" required placeholder=" " name="password" />
+            <label for="password">Password</label>
+            <span class="underline underline-password"></span>
           </dd>
         </dl>
         <dl class="inputbox">
           <dd class="inputbox-content">
-            <input id="input3" type="password" required placeholder=" " />
-            <label for="input3">Confirm password</label>
-            <span class="underline"></span>
+            <input id="register-input-password-check" type="password-check" required placeholder=" " />
+            <label for="password-check">Confirm password</label>
+            <span class="underline underline-password"></span>
           </dd>
         </dl>
         <dl class="inputbox">
           <dd class="inputbox-content">
             <input
-              id="input4"
+              id="register-input-tel"
               type="tel"
               pattern="[+][0-9]{2} [0-9]{9}"
               placeholder=" "
+              name="phoneNumber"
             />
-            <label for="input4">Phone Number</label>
+            <label for="phoneNumber">Phone Number</label>
             <span class="underline"></span>
           </dd>
           <small>Format: +48 123456789</small>
@@ -112,11 +118,11 @@
         <dl class="inputbox">
           <div class="inputbox-radio-container">
             <span>Gender: <br /></span>
-            <input id="Male" type="radio" required name="radio" />
+            <input id="Male" type="radio" value="Male" required name="gender" />
             <label for="Male">Male</label>
-            <input id="Female" type="radio" required name="radio" />
+            <input id="Female" type="radio" value="Female" required name="gender" />
             <label for="Female">Female</label>
-            <input id="Other" type="radio" required name="radio" />
+            <input id="Other" type="radio" value="Other" required name="gender" />
             <label for="Other">Other</label>
           </div>
         </dl>
@@ -132,6 +138,8 @@
               size="2"
               class="date-field"
               placeholder="DD"
+              required
+              name="birthDate"
             />
           </div>
           /
@@ -144,6 +152,8 @@
               size="2"
               class="date-field"
               placeholder="MM"
+              required
+              name="birthDate"
             />
           </div>
           /
@@ -156,12 +166,15 @@
               size="4"
               class="date-field date-field--year"
               placeholder="YYYY"
+              required
+              name="birthDate"
             />
           </div>
           <p><small>E.g. 26/04/1980</small></p>
         </dl>
         <div class="btns">
-          <button class="btn btn-confirm">Log In</button>
+          <button class="btn btn-confirm btn-register">Sign up</button>
+          </form>
           <button class="btn btn-cancel">Cancel</button>
         </div>
       </div>

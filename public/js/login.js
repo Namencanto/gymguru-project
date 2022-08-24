@@ -16,6 +16,14 @@ const signupEmail = document.querySelector("#signup-input-email");
 
 const buttonRegister = document.querySelector(".button-register");
 const buttonLogin = document.querySelector(".button-login");
+const buttonSubmitRegister = document.querySelector(".btn-register");
+
+const registerPassword = document.querySelector("#register-input-password");
+const registerPasswordCheck = document.querySelector(
+  "#register-input-password-check"
+);
+
+const allInputs = document.querySelectorAll("input");
 
 const wrap = document.querySelector("#wrap");
 // QUERY SELECTORS END
@@ -84,6 +92,7 @@ const login = function (button, type, form, focus = "") {
 
 const loginbtn = function (button) {
   // this function loops selected button and specifies what form is to be displayed
+
   button.forEach((_, i) => {
     if (button == btnLoginToggle) {
       login(button[i], "login", loginForm, loginEmail);
@@ -96,13 +105,27 @@ const loginbtn = function (button) {
 btnCancel.forEach((btn, i) => {
   // this function is for close form panel
   btn.addEventListener("click", function () {
-    wrap.style.zIndex = -5;
     wrap.style.opacity = 0;
     setTimeout(() => {
       signupForm.classList.add("hidden");
       loginForm.classList.add("hidden");
+      wrap.style.zIndex = -5;
+
+      //clearing inputs
+      allInputs.forEach((e) => {
+        e.value = "";
+      });
     }, 400);
   });
+});
+
+//Checking passwords
+buttonSubmitRegister.addEventListener("click", function () {
+  if (registerPassword.value != registerPasswordCheck.value) {
+    registerPasswordCheck.setCustomValidity("Passwords are not the same");
+  } else if (registerPassword.value == registerPasswordCheck.value) {
+    registerPasswordCheck.setCustomValidity("");
+  }
 });
 
 // FUNCTIONS END
@@ -113,18 +136,3 @@ loginbtn(btnSignupToggle);
 
 login(buttonRegister, "register", signupForm, signupEmail);
 login(buttonLogin, "login", loginForm, loginEmail);
-
-const loginMediaQuery = function () {
-  if (!signupForm.classList.contains("hidden")) {
-    wrap.classList.remove("login-small");
-    wrap.classList.add("signup-small");
-  } else if (!loginForm.classList.contains("hidden")) {
-    wrap.classList.remove("signup-small");
-    wrap.classList.add("login-small");
-  } else {
-    wrap.classList.remove("login-small");
-    wrap.classList.remove("signup-small");
-  }
-};
-
-loginMediaQuery();

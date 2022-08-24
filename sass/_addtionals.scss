@@ -185,16 +185,16 @@
 }
 
 //checkbox styling
-input[type="checkbox"] + label {
+#login-checkbox-remember + label {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-input[type="checkbox"] {
+#login-checkbox-remember {
   display: none;
 }
 
-input[type="checkbox"] + label:before {
+#login-checkbox-remember + label:before {
   @media only screen and (max-width: $bp-small) {
     width: 5rem;
     height: 1.5rem;
@@ -217,17 +217,17 @@ input[type="checkbox"] + label:before {
   margin-right: 0.25rem;
 }
 
-input[type="checkbox"] + label:active:before {
+#login-checkbox-remember + label:active:before {
   transform: scale(0);
 }
 
-input[type="checkbox"]:checked + label:before {
+#login-checkbox-remember:checked + label:before {
   background-color: #eb699e;
   border-color: #eb699e;
   color: #fff;
 }
 
-input[type="checkbox"]:checked:disabled + label:before {
+#login-checkbox-remember:checked:disabled + label:before {
   transform: scale(1);
   background-color: #f7c28f;
   border-color: #f7c28f;
