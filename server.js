@@ -8,10 +8,10 @@ const path = require("path");
 
 const app = express();
 
+var userData = require("./Backend/controllers/users.controller");
+
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
-
-var userData = require("./Backend/controllers/users.controller");
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
@@ -76,6 +76,19 @@ app.get("/offert", function (req, res) {
   });
 });
 app.get("/account", function (req, res) {
+  // set jwt in cookie for auth user
+
+  if (!req.cookies.jwt) {
+    let options = {
+      maxAge: 1000 * 60 * 15, // would expire after 15 minutes
+      httpOnly: true, // The cookie only accessible by the web server
+      signed: false, // Indicates if the cookie should be signed
+    };
+
+    // Set cookie
+    res.cookie("jwt", userData.userData.token, options); // options is optional
+  }
+  // render page
   res.render(path.join(__dirname, "views/pages/account.ejs"), {
     title: "our offert",
     userData: userData.userData,
@@ -99,6 +112,7 @@ app.post("/users/login", async (req, res) => {
     res.status(500).send();
   }
 });
+
 // const User = require("./Backend/models/user.model");
 
 // app.post("/", function (req, res, next) {
