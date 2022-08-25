@@ -17,7 +17,9 @@ exports.register = (req, res, next) => {
     if (error) {
       return next(error);
     }
-    // return res.redirect("/account");
+    var userData = results;
+    exports.userData = userData;
+    return res.redirect("/account");
   });
 };
 
