@@ -16,7 +16,6 @@ app.use(cookieParser());
 // set the view engine to ejs
 app.set("view engine", "ejs");
 
-mongoose.Promise = global.Promise;
 mongoose
   .connect(dbConfig.db, {
     useNewUrlParser: true,
@@ -125,5 +124,7 @@ app.post("/users/login", async (req, res) => {
 
 // this variable is for online hosting like heroku or our localhost:5000
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
+// const PORT = process.env.PORT || 8080;
+// app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
+app.listen(process.env.PORT || 8080);
+console.log("Server is listening on port 8080");
