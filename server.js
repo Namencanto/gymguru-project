@@ -16,20 +16,20 @@ app.use(cookieParser());
 // set the view engine to ejs
 app.set("view engine", "ejs");
 
-// mongoose.Promise = global.Promise;
-// mongoose
-//   .connect(dbConfig.db, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(
-//     () => {
-//       console.log("Database connected");
-//     },
-//     (error) => {
-//       console.log("Database can't be connected: " + error);
-//     }
-//   );
+mongoose.Promise = global.Promise;
+mongoose
+  .connect(dbConfig.db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(
+    () => {
+      console.log("Database connected");
+    },
+    (error) => {
+      console.log("Database can't be connected: " + error);
+    }
+  );
 
 // auth.authenticateToken.unless = unless;
 // console.log(auth.authenticateToken);
