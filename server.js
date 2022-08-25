@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const dbConfig = require("backend/config/db.config.js");
-// const auth = require("backend/middlewares/auth.js");
-// const errors = require("backend/middlewares/errors.js");
+const dbConfig = require("./Backend/config/db.config.js");
+const auth = require("./Backend/middlewares/auth.js");
+const errors = require("./Backend/middlewares/errors.js");
 const unless = require("express-unless");
 const path = require("path");
 
@@ -52,10 +52,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // initialize routes
-// app.use("/users", require("./Backend/routes/users.routes.js"));
+app.use("/users", require("./Backend/routes/users.routes.js"));
 
 // middleware for error responses
-// app.use(errors.errorHandler);
+app.use(errors.errorHandler);
 
 // app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -93,6 +93,7 @@ app.get("/account", function (req, res) {
     title: "our offert",
     userData: userData.userData,
   });
+  console.log(userData.userData);
 });
 
 app.post("/users/login", async (req, res) => {
