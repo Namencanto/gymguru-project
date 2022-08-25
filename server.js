@@ -1,14 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const dbConfig = require("./backend/config/db.config.js");
-const auth = require("./backend/middlewares/auth.js");
-const errors = require("./backend/middlewares/errors.js");
+const dbConfig = require("backend/config/db.config.js");
+const auth = require("backend/middlewares/auth.js");
+const errors = require("backend/middlewares/errors.js");
 const unless = require("express-unless");
 const path = require("path");
 
 const app = express();
 
-var userData = require("./Backend/controllers/users.controller");
+var userData = require("Backend/controllers/users.controller");
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
