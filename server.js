@@ -8,7 +8,7 @@ const path = require("path");
 
 const app = express();
 
-var userData = require("./Backend/controllers/users.controller");
+// var userData = require("./Backend/controllers/users.controller");
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
@@ -55,7 +55,7 @@ app.use(express.json());
 app.use("/users", require("./Backend/routes/users.routes.js"));
 
 // middleware for error responses
-app.use(errors.errorHandler);
+// app.use(errors.errorHandler);
 
 // app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -91,9 +91,8 @@ app.get("/account", function (req, res) {
   // render page
   res.render(path.join(__dirname, "views/pages/account.ejs"), {
     title: "our offert",
-    userData: userData.userData,
+    // userData: userData.userData,
   });
-  console.log(userData.userData);
 });
 
 app.post("/users/login", async (req, res) => {
