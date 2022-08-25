@@ -8,7 +8,7 @@ const errors = require("./backend/middlewares/errors.js");
 const unless = require("express-unless");
 const ejs = require("ejs");
 
-const userData = require("./Backend/controllers/users.controller");
+// const userData = require("./Backend/controllers/users.controller");
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
@@ -71,7 +71,7 @@ app.get("/account", function (req, res) {
   // render page
   res.render(path.join(__dirname, "views/pages/account.ejs"), {
     title: "our offert",
-    userData: userData.userData,
+    // userData: userData.userData,
   });
 });
 app.post("/users/login", async (req, res) => {
