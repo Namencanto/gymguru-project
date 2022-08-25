@@ -1,14 +1,14 @@
 const express = require("express");
-const app = express();
-const path = require("path");
-// const mongoose = require("mongoose");
-// const dbConfig = require("./backend/config/db.config.js");
-// const auth = require("./backend/middlewares/auth.js");
-// const errors = require("./backend/middlewares/errors.js");
+const mongoose = require("mongoose");
+const dbConfig = require("./backend/config/db.config.js");
+const auth = require("./backend/middlewares/auth.js");
+const errors = require("./backend/middlewares/errors.js");
 const unless = require("express-unless");
-const ejs = require("ejs");
+const path = require("path");
 
-// const userData = require("./Backend/controllers/users.controller");
+const app = express();
+
+var userData = require("./Backend/controllers/users.controller");
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
@@ -16,20 +16,37 @@ app.use(cookieParser());
 // set the view engine to ejs
 app.set("view engine", "ejs");
 
-// mongoose
-//   .connect(dbConfig.db, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(
-//     () => {
-//       console.log("Database connected");
-//     },
-//     (error) => {
-//       console.log("Database can't be connected: " + error);
-//     }
-//   );
+mongoose
+  .connect(dbConfig.db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(
+    () => {
+      console.log("Database connected");
+    },
+    (error) => {
+      console.log("Database can't be connected: " + error);
+    }
+  );
 
+// auth.authenticateToken.unless = unless;
+// console.log(auth.authenticateToken);
+// app.use(
+//   auth.authenticateToken.unless({
+//     path: [
+//       { url: "/", methods: ["POST"] },
+//       { url: "/users/login", methods: ["POST"] },
+//       { url: "/users/register", methods: ["POST"] },
+//       { url: "/users/otpLogin", methods: ["POST"] },
+//       { url: "/users/verifyOTP", methods: ["POST"] },
+//     ],
+//   })
+// );
+// middleware for authenticating token submitted with requests
+/**
+ * Conditionally skip a middleware when a condition is met.
+ */
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -37,7 +54,7 @@ app.use(express.json());
 app.use("/users", require("./Backend/routes/users.routes.js"));
 
 // middleware for error responses
-// app.use(errors.errorHandler);
+app.use(errors.errorHandler);
 
 // app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -59,21 +76,25 @@ app.get("/offert", function (req, res) {
 });
 app.get("/account", function (req, res) {
   // set jwt in cookie for auth user
+
   if (!req.cookies.jwt) {
     let options = {
       maxAge: 1000 * 60 * 15, // would expire after 15 minutes
       httpOnly: true, // The cookie only accessible by the web server
       signed: false, // Indicates if the cookie should be signed
     };
+
     // Set cookie
     res.cookie("jwt", userData.userData.token, options); // options is optional
   }
   // render page
   res.render(path.join(__dirname, "views/pages/account.ejs"), {
     title: "our offert",
-    // userData: userData.userData,
+    userData: userData.userData,
   });
+  console.log(userData.userData);
 });
+
 app.post("/users/login", async (req, res) => {
   const user = users.find((user) => user.name === req.body.name);
 
@@ -91,5 +112,17 @@ app.post("/users/login", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 8080);
-console.log("Server is listening on port 8080");
+// const User = require("./Backend/models/user.model");
+
+// app.post("/", function (req, res, next) {
+//   let newUser = new User({
+//     email: res.body.email,
+//     password: req.body.password,
+//   });
+//   res.status(500).json({ message: newUser });
+// });
+
+// this variable is for online hosting like heroku or our localhost:5000
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
