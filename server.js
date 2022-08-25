@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 // const dbConfig = require("./backend/config/db.config.js");
 // const auth = require("./backend/middlewares/auth.js");
 // const errors = require("./backend/middlewares/errors.js");
@@ -16,19 +16,19 @@ app.use(cookieParser());
 // set the view engine to ejs
 app.set("view engine", "ejs");
 
-mongoose
-  .connect(dbConfig.db, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(
-    () => {
-      console.log("Database connected");
-    },
-    (error) => {
-      console.log("Database can't be connected: " + error);
-    }
-  );
+// mongoose
+//   .connect(dbConfig.db, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(
+//     () => {
+//       console.log("Database connected");
+//     },
+//     (error) => {
+//       console.log("Database can't be connected: " + error);
+//     }
+//   );
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
