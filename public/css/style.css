@@ -49,6 +49,9 @@ body {
 .user-account-page {
   background-color: #f2daac; }
 
+.logout-page {
+  background-color: #888; }
+
 .footer {
   background: white;
   background: linear-gradient(180deg, white 14%, #232323 14%);
@@ -2131,3 +2134,58 @@ body {
 
 .hidden {
   display: none; }
+
+.logout-wrap h1 {
+  margin-top: 15rem;
+  font-size: 10rem;
+  text-align: center; }
+  @media only screen and (max-width: 50em) {
+    .logout-wrap h1 {
+      font-size: 6rem; } }
+
+@media only screen and (max-width: 50em) and (max-width: 37.5em) {
+  .logout-header .header {
+    padding: 0; } }
+
+@media only screen and (max-width: 50em) {
+  .logout-header .header__navbar {
+    flex-wrap: wrap !important;
+    justify-content: center;
+    margin: auto; }
+    .logout-header .header__navbar li {
+      margin: 0 auto; } }
+    @media only screen and (max-width: 50em) and (max-width: 37.5em) {
+      .logout-header .header__navbar li {
+        font-size: 2.6rem; } }
+
+@media only screen and (max-width: 50em) {
+  .logout-header .header__logo {
+    font-size: 4rem; } }
+  @media only screen and (max-width: 50em) and (max-width: 37.5em) {
+    .logout-header .header__logo {
+      font-size: 6rem; } }
+  @media only screen and (max-width: 50em) and (max-width: 37.5em) and (max-width: 200px) {
+    .logout-header .header__logo {
+      font-size: 4rem; } }
+  @media only screen and (max-width: 50em) and (max-width: 37.5em) {
+      .logout-header .header__logo a {
+        padding: 0;
+        margin: 0; } }
+
+@media only screen and (max-width: 50em) and (max-width: 37.5em) {
+  .logout-header .header .btn-search:focus ~ .input-search {
+    width: 40rem; } }
+  @media only screen and (max-width: 50em) and (max-width: 37.5em) and (max-width: 400px) {
+    .logout-header .header .btn-search:focus ~ .input-search {
+      width: 30rem; } }
+
+@media only screen and (max-width: 50em) and (max-width: 37.5em) {
+  .logout-header .header .input-search, .logout-header .header .input-search::placeholder {
+    font-size: 2rem; } }
+
+@media only screen and (max-width: 50em) and (max-width: 37.5em) {
+  .logout-header .header .input-search:focus {
+    width: 40rem; } }
+  @media only screen and (max-width: 50em) and (max-width: 37.5em) and (max-width: 400px) {
+    .logout-header .header .input-search:focus {
+      width: 30rem; } }

@@ -6,9 +6,10 @@ const errors = require("./Backend/middlewares/errors.js");
 const unless = require("express-unless");
 const path = require("path");
 
-const app = express();
+const User = require("./Backend/models/user.model.js");
+const jwt_decode = require("jwt-decode");
 
-var userData = require("./Backend/controllers/users.controller.js");
+const app = express();
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
@@ -30,19 +31,6 @@ mongoose
     }
   );
 
-// auth.authenticateToken.unless = unless;
-// console.log(auth.authenticateToken);
-// app.use(
-//   auth.authenticateToken.unless({
-//     path: [
-//       { url: "/", methods: ["POST"] },
-//       { url: "/users/login", methods: ["POST"] },
-//       { url: "/users/register", methods: ["POST"] },
-//       { url: "/users/otpLogin", methods: ["POST"] },
-//       { url: "/users/verifyOTP", methods: ["POST"] },
-//     ],
-//   })
-// );
 // middleware for authenticating token submitted with requests
 /**
  * Conditionally skip a middleware when a condition is met.
@@ -74,25 +62,31 @@ app.get("/offert", function (req, res) {
     title: "our offert",
   });
 });
-app.get("/account", function (req, res) {
-  // set jwt in cookie for auth user
 
-  if (!req.cookies.jwt) {
-    let options = {
-      maxAge: 1000 * 60 * 15, // would expire after 15 minutes
-      httpOnly: true, // The cookie only accessible by the web server
-      signed: false, // Indicates if the cookie should be signed
-    };
+// Secure with middleware user page
+app.get("/account", auth.authenticateToken, function (req, res) {
+  // Decoding token to get information about user
+  let decodeToken = req.cookies["jwt"];
+  let decodedEmail = jwt_decode(decodeToken).data;
 
-    // Set cookie
-    res.cookie("jwt", userData.userData.token, options); // options is optional
-  }
-  // render page
-  res.render(path.join(__dirname, "views/pages/account.ejs"), {
-    title: "our offert",
-    userData: userData.userData,
+  // Search token account in database
+  User.findOne({ email: decodedEmail }, (error, data) => {
+    if (error) {
+      console.log(error);
+    } else {
+      // Render page and pass user data
+      res.render(path.join(__dirname, "views/pages/account.ejs"), {
+        title: "Welcome",
+        userData: data,
+      });
+    }
   });
-  console.log(userData.userData);
+});
+
+app.get("/logout", function (req, res) {
+  res.render(path.join(__dirname, "views/pages/logout.ejs"), {
+    title: "Session expired",
+  });
 });
 
 app.post("/users/login", async (req, res) => {
