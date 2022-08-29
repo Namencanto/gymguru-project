@@ -126,8 +126,8 @@
       margin: 2.5rem auto 0 auto;
       & button {
         @media only screen and (max-width: $bp-small) {
-          width: 5rem;
-          height: 5rem;
+          width: 4rem;
+          height: 4rem;
           border-radius: 2.5rem;
           &:nth-last-child(-n + 2) {
             margin-left: 2rem;

@@ -11,13 +11,12 @@
     overflow: auto;
 
     &-avatar {
-      height: 8rem;
+      height: 10rem;
+      width: 10rem;
 
       // border: 1px solid #040d20;
       border-radius: 50%;
       padding: 0;
-      width: auto;
-      mix-blend-mode: multiply;
     }
     &-text {
       display: flex;

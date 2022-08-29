@@ -47,19 +47,30 @@ app.use(errors.errorHandler);
 // app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
 
+let cookie = false;
+app.use((req, res, next) => {
+  if (req.cookies["jwt"]) {
+    cookie = true;
+  } else cookie = false;
+  next();
+});
+
 app.get("/", function (req, res) {
   res.render(path.join(__dirname, "views/pages/index.ejs"), {
     title: "your best gym",
+    cookie: cookie,
   });
 });
 app.get("/about", function (req, res) {
   res.render(path.join(__dirname, "views/pages/about.ejs"), {
     title: "about us",
+    cookie: cookie,
   });
 });
 app.get("/offert", function (req, res) {
   res.render(path.join(__dirname, "views/pages/gym-offert.ejs"), {
     title: "our offert",
+    cookie: cookie,
   });
 });
 
@@ -78,6 +89,7 @@ app.get("/account", auth.authenticateToken, function (req, res) {
       res.render(path.join(__dirname, "views/pages/account.ejs"), {
         title: "Welcome",
         userData: data,
+        cookie: true,
       });
     }
   });
@@ -86,6 +98,7 @@ app.get("/account", auth.authenticateToken, function (req, res) {
 app.get("/logout", function (req, res) {
   res.render(path.join(__dirname, "views/pages/logout.ejs"), {
     title: "Session expired",
+    cookie: false,
   });
 });
 
@@ -104,6 +117,12 @@ app.post("/users/login", async (req, res) => {
   } catch {
     res.status(500).send();
   }
+});
+
+app.get("*", function (req, res, next) {
+  res.render(path.join(__dirname, "views/pages/404error.ejs"), {
+    title: "This page not exist",
+  });
 });
 
 // const User = require("./Backend/models/user.model");

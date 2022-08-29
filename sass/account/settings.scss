@@ -58,7 +58,6 @@
     background-color: #e4c39e;
     height: 100%;
     margin: 1rem;
-    margin-bottom: 4rem;
 
     &-referrals {
       display: flex;
@@ -215,9 +214,10 @@
       display: flex;
       flex-direction: column;
       max-height: fit-content;
-      & p {
+      &-paragraf {
         margin: auto;
         color: rgba(7, 39, 39, 0.5);
+        text-align: center;
         & a {
           text-decoration: none;
           color: rgb(7, 39, 39);
@@ -230,8 +230,8 @@
       }
       &-content {
         @media only screen and (max-width: $bp-small) {
-          margin-top: 5rem;
-          height: 50rem;
+          margin-top: 1.5rem;
+          height: auto;
         }
         display: flex;
         flex-direction: column;
@@ -241,6 +241,9 @@
         &-faq {
           @media only screen and (max-width: $bp-small) {
             margin: 0.5rem 1rem;
+            &:last-child {
+              margin-bottom: 1rem;
+            }
           }
           width: auto;
           max-width: 100rem;
@@ -281,6 +284,9 @@
               transform: rotate(135deg);
             }
             &:checked + label {
+              @media only screen and (max-width: $bp-small) {
+                height: 42.5rem;
+              }
               display: block;
               background: #ceb08e7c !important;
               color: #4f7351;

@@ -45,6 +45,13 @@
       font-size: 18px;
       margin: 0rem 1rem;
       & span {
+        @media only screen and (max-width: $bp-small) {
+          //this is for expand click area
+          width: 5rem;
+          margin-left: auto;
+          display: flex;
+          justify-content: flex-end;
+        }
         cursor: pointer;
       }
     }

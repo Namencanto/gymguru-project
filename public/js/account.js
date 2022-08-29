@@ -234,3 +234,34 @@ for (const e of faqInput) {
     }
   });
 }
+
+/////////////////////////////////////////
+////////////////////////
+//////// USER AVATAR LOGIC:
+const userAvatar = document.querySelector("#file");
+const userNavAvatar = document.querySelector(
+  ".user-account__panel-info-avatar"
+);
+let image = document.querySelector("#output");
+
+const changeUserAvatar = function () {
+  if (localStorage.hasOwnProperty("userAvatar")) {
+    image.src = localStorage.getItem("userAvatar");
+    userNavAvatar.src = localStorage.getItem("userAvatar");
+  }
+
+  userAvatar.addEventListener("change", function (event) {
+    const tgt = event.target || window.event.srcElement,
+      files = tgt.files;
+
+    const fr = new FileReader();
+    fr.addEventListener("load", function () {
+      userNavAvatar.src = fr.result;
+      image.src = fr.result;
+      localStorage.setItem("userAvatar", fr.result);
+    });
+    fr.readAsDataURL(files[0]);
+  });
+};
+
+changeUserAvatar();

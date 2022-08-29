@@ -1,16 +1,18 @@
 .logout {
   &-wrap {
-    & h1 {
-      @media only screen and (max-width: $bp-medium) {
-        font-size: 6rem;
-      }
-      margin-top: 15rem;
-      font-size: 10rem;
-
-      text-align: center;
+    @media only screen and (max-width: $bp-small) {
+      font-size: 3rem;
+    }
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 6rem;
+    align-items: center;
+    line-height: 12.5rem;
+    & h2 {
+      transform: scale(0.75);
     }
   }
-
   &-header {
     @media only screen and (max-width: $bp-medium) {
       .header {
