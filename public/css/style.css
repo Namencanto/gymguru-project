@@ -799,6 +799,20 @@ body {
   background-color: #f7c28f;
   border-color: #f7c28f; }
 
+.invalidInput {
+  color: crimson;
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin-bottom: -1.8rem;
+  display: inline-block; }
+  .invalidInput p {
+    margin-left: 0.5rem; }
+  .invalidInput i {
+    font-size: 1.8rem; }
+
+.invalidAccountPassword {
+  margin: auto auto -1.2rem auto; }
+
 .about {
   display: grid;
   grid-template-rows: repeat(7, 12vh);
@@ -1381,7 +1395,7 @@ body {
   justify-content: center;
   align-items: center; }
   .user-account__main-text h1 {
-    font-size: 5.5rem;
+    font-size: 5rem;
     font-weight: 400;
     text-shadow: 4px 4px 6px rgba(66, 68, 90, 0.2); }
     @media only screen and (max-width: 37.5em) {
@@ -1504,6 +1518,8 @@ body {
       display: flex;
       align-items: center;
       text-align: start; }
+      .user-account__panel ul li button:focus {
+        outline: none; }
       .user-account__panel ul li button:hover {
         cursor: pointer;
         border-left: 0.75rem rgba(235, 105, 158, 0.5) solid;
@@ -1816,16 +1832,20 @@ body {
   padding: 2rem 2rem;
   background-color: #cfb08dab;
   width: 100%; }
-  @media only screen and (max-width: 1400px) {
+  @media only screen and (max-width: 1550px) {
     .settings-tab {
       font-size: 1.8rem;
       padding: 2rem 1.5rem; } }
-  @media only screen and (max-width: 1400px) and (max-width: 50em) {
+  @media only screen and (max-width: 1550px) and (max-width: 1350px) {
+    .settings-tab {
+      font-size: 1.6rem;
+      padding: 2rem 1.25rem; } }
+  @media only screen and (max-width: 1550px) and (max-width: 50em) {
     .settings-tab {
       font-size: 1.6rem;
       padding: 2rem 1rem;
       margin: 0.5rem 0.5rem; } }
-  @media only screen and (max-width: 1400px) and (max-width: 50em) and (max-width: 37.5em) {
+  @media only screen and (max-width: 1550px) and (max-width: 50em) and (max-width: 37.5em) {
     .settings-tab {
       margin: 0.5rem 2rem; } }
   .settings-tab:nth-child(1) {
@@ -1856,22 +1876,70 @@ body {
         list-style-type: none;
         margin: 1.5rem 0 auto 1rem;
         margin-right: auto; }
-  .settings-main-notifications {
+  .settings-main-delete {
     display: flex;
     flex-direction: column;
     max-height: fit-content; }
-    .settings-main-notifications h3 {
+    .settings-main-delete h3 {
       text-align: center;
       font-size: 3rem;
       font-weight: 400; }
-    .settings-main-notifications-content {
-      max-height: 50rem;
-      overflow: auto; }
-      .settings-main-notifications-content ul {
+    .settings-main-delete-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: auto;
+      margin-top: 2.5rem; }
+      .settings-main-delete-content ul {
         font-size: 2rem;
         list-style-type: none;
         margin: 1.5rem 0 auto 1rem;
         margin-right: auto; }
+      .settings-main-delete-content-inputs button {
+        vertical-align: middle;
+        background-color: transparent;
+        padding: 0 1.5rem;
+        border: 1px solid #c0a588;
+        border-right: 4px solid #c0a588;
+        border-bottom: 4px solid #c0a588;
+        text-decoration: none;
+        color: #072727;
+        background-color: #dbbc9a;
+        font-family: Arial;
+        font-size: 2rem;
+        transition: transform 0.2s ease-in-out;
+        width: 100%;
+        height: 5rem; }
+        .settings-main-delete-content-inputs button:hover {
+          cursor: pointer; }
+        .settings-main-delete-content-inputs button:focus {
+          transform: translateY(0.1rem); }
+      .settings-main-delete-content-inputs .input-delete-checkbox {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        margin: 1rem 0; }
+        .settings-main-delete-content-inputs .input-delete-checkbox input {
+          width: 2rem;
+          margin: 0 1rem; }
+      .settings-main-delete-content-input {
+        text-align: center;
+        margin: 0 auto; }
+        .settings-main-delete-content-input input {
+          margin: auto;
+          margin: 0rem 0 0.5rem;
+          width: 25rem;
+          height: 3rem;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          font-size: 2rem;
+          font-weight: 300;
+          color: #072727;
+          background-color: #dbbc9a;
+          border: 1px solid rgba(0, 0, 0, 0.1); }
+        .settings-main-delete-content-input label {
+          color: #072727; }
   .settings-main-account {
     display: flex;
     flex-direction: column;
@@ -1909,8 +1977,8 @@ body {
         .settings-main-account-content-avatar img {
           position: absolute;
           object-fit: cover;
-          width: 22.5rem;
-          height: 22.5rem;
+          width: 20rem;
+          height: 20rem;
           border-radius: 50%;
           z-index: 0; }
         .settings-main-account-content-avatar span {
@@ -1919,8 +1987,8 @@ body {
           height: 2rem; }
         .settings-main-account-content-avatar-label {
           cursor: pointer;
-          width: 22.5rem;
-          height: 22.5rem; }
+          width: 20rem;
+          height: 20rem; }
       .settings-main-account-content-inputs {
         display: flex;
         flex-wrap: wrap;
@@ -2318,14 +2386,19 @@ body {
       background-color: #383a41;
       margin: 0 auto;
       margin-top: 25px; }
+  .page404 h2 {
+    font-weight: 500; }
   .page404 h1 {
-    font-weight: 800;
+    font-weight: 800; }
+  .page404 h1,
+  .page404 h2 {
     color: #383a41;
     text-align: center;
     font-size: 2.5em;
     padding-top: 20px; }
     @media screen and (max-width: 400px) {
-      .page404 h1 {
+      .page404 h1,
+      .page404 h2 {
         padding-left: 20px;
         padding-right: 20px;
         font-size: 2em; } }
@@ -2355,3 +2428,53 @@ body {
     .page404 .btn:hover {
       background-color: rgba(94, 127, 220, 0.8);
       transition: all 0.2s linear; }
+
+.success-message {
+  visibility: hidden;
+  backdrop-filter: blur(5px) brightness(50%);
+  text-align: center;
+  width: 500vh;
+  height: 500vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: scale(2);
+  transform-origin: 100%;
+  z-index: 1000;
+  transition: opacity 1s; }
+  .success-message-opacity {
+    opacity: 0; }
+  .success-message .success-message__icon {
+    margin-top: 110vh;
+    max-width: 10rem; }
+    @media only screen and (max-width: 37.5em) {
+      .success-message .success-message__icon {
+        margin-top: 90vh; } }
+  .success-message .success-message__title {
+    color: #3dc480;
+    transform: translateY(25px);
+    opacity: 0;
+    transition: all 200ms ease; }
+    .active .success-message .success-message__title {
+      transform: translateY(0);
+      opacity: 1; }
+  .success-message .success-message__content {
+    color: #b8babb;
+    transform: translateY(25px);
+    opacity: 0;
+    transition: all 200ms ease;
+    transition-delay: 50ms; }
+    .active .success-message .success-message__content {
+      transform: translateY(0);
+      opacity: 1; }
+  .success-message .icon-checkmark circle {
+    fill: #3dc480;
+    transform-origin: 50% 50%;
+    transform: scale(0);
+    transition: transform 200ms cubic-bezier(0.22, 0.96, 0.38, 0.98); }
+  .success-message .icon-checkmark path {
+    transition: stroke-dashoffset 350ms ease;
+    transition-delay: 100ms; }
+  .active .success-message .icon-checkmark circle {
+    transform: scale(1); }

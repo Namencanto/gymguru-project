@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const userServices = require("../services/users.services.js");
+const User = require("../models/user.model");
 
 /**
  * 1. To secure the password, we are using the bcryptjs, It stores the hashed password in the database.
@@ -17,9 +18,19 @@ exports.register = (req, res, next) => {
     if (error) {
       return next(error);
     }
-    var userData = results;
-    exports.userData = userData;
-    return res.redirect("/account");
+
+    if (!req.cookies["registerSuccesfull"]) {
+      let options = {
+        maxAge: 1000 * 10, // would expire after 10 seconds
+        httpOnly: false, // The cookie only accessible by the web server
+        signed: false, // Indicates if the cookie should be signed
+      };
+
+      // Set cookie
+      res.cookie("registerSuccesfull", "hi", options); // options is optional
+    }
+
+    return res.redirect("/");
   });
 };
 
@@ -45,11 +56,62 @@ exports.login = (req, res, next) => {
   });
 };
 
+exports.userDelete = (req, res, next) => {
+  const { email, password } = req.body;
+
+  userServices.userDelete({ email, password }, (error, results) => {
+    if (error) {
+      return next(error);
+    }
+    if (req.cookies["jwt"]) {
+      res.clearCookie("jwt");
+    }
+    if (!error) {
+      return res.redirect("/");
+    }
+  });
+};
+
+exports.userUpdate = (req, res, next) => {
+  const { email, password } = req.body;
+  let { newPassword, newEmail, userName, surName, userAvatar } = req.body;
+
+  //Guard classes
+  if (newEmail === "") {
+    newEmail = email;
+  }
+  if (newPassword === "") {
+    newPassword = password;
+  }
+  if (userName === "") {
+    userName = "John";
+  }
+  if (surName === "") {
+    surName = "Doe";
+  }
+  if (userAvatar === "") {
+    userAvatar = "https://static.thenounproject.com/png/4035892-200.png";
+  }
+  //
+
+  let salt = bcrypt.genSaltSync(10);
+  newPassword = bcrypt.hashSync(newPassword, salt);
+
+  userServices.userUpdate(
+    { email, password, newEmail, newPassword, userName, surName },
+    (error, results) => {
+      console.log(results);
+      if (error) {
+        return next(error);
+      }
+      if (!error) {
+        exports.logoutInfo = "update";
+        return res.redirect("/logout");
+      }
+    }
+  );
+};
+
 exports.userProfile = (req, res, next) => {
   return res.status(401).json({ message: "Authorized User!!" });
 };
-
-// res.status(200).send({
-//   message: "Success",
-//   data: results,
-// });

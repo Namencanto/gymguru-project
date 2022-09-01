@@ -18,7 +18,7 @@
               alt="user avatar"
             />
             <div class="user-account__panel-info-text">
-              <h5>John Doe</h5>
+              <h5><%=userData.name%> <%=userData.surname%></h5>
               <p>
                 <%= userData.email%>
                 <!-- john.doe@example.com -->
@@ -191,10 +191,10 @@
               <div class="settings-container">
                 <ul class="settings-tab-container">
                   <li class="settings-tab settings-tab-referrals">Referrals</li>
-                  <li class="settings-tab settings-tab-notifications">
-                    Notifications
+                  <li class="settings-tab settings-tab-delete">
+                    Delete account
                   </li>
-                  <li class="settings-tab settings-tab-account">Account</li>
+                  <li class="settings-tab settings-tab-account">Account settings</li>
                   <li class="settings-tab settings-tab-help">Help</li>
                   <li class="settings-tab settings-tab-personalizations">
                     Personalizations
@@ -226,30 +226,45 @@
                 </div>
   
               <!-- NOTIFICATIONS TAB -->   
-                <div class="settings-main-notifications all-tab hidden">
-                  <h3>Your referrals:</h3>
-                  <div class="settings-main-notifications-content">
-                    <ul>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                      <li>Referral: 124124</li>
-                    </ul>
+                <div class="settings-main-delete all-tab hidden">
+                  <h3>Delete account:</h3>
+                  <div class="settings-main-delete-content">
+                    <div class="settings-main-delete-content-inputs delete-inputs">
+                      <form name="deleteAccount" action="/users/userDelete?_method=DELETE" method="post">
+                    <div
+                        class="settings-main-delete-content-input input-delete"
+                      >
+                        <label for="email">Email:</label>
+                        <input 
+                        type="text" name="email" id="email" required/>
+                      </div>
+                      <div
+                      class="settings-main-delete-content-input input-delete"
+                    >
+                      <label for="password">Password:</label>
+                      <input 
+                      type="password" name="password" id="password" required/>
+                      <p class="invalidInput invalidDeleteAccountPassword hidden "><i class="fas fa-exclamation-triangle"></i> Invalid Password/Email</p>
+                    </div>
+                    <div
+                      class="settings-main-delete-content-input input-delete-checkbox"
+                    >
+                      <label for="name">My account will be <b>PERMANENTLY</b> deleted.</label>
+                      <input 
+                      type="checkbox" name="" id="name" required/>
+                    </div>
+                    <button type="submit">Delete account</button>
+                  </form>
+                    </div>
                   </div>
                 </div>
               <!-- TODO LATER -->
   
               <!-- ACCOUNT TAB -->
-                <div class="settings-main-account all-tab hidden">
-                  <h3>Account settings:</h3>
+                <div class="settings-main-account all-tab hidden">            
+                    <h3>Account settings:</h3>
                   <div class="settings-main-account-content">
+                    
                     <div class="settings-main-account-content-avatar">
                       <label
                         class="settings-main-account-content-avatar-label"
@@ -258,45 +273,56 @@
                         <span class="glyphicon glyphicon-camera"></span>
                         <span>Change Image</span>
                       </label>
-                      <input id="file" type="file" />
+                      <input id="file" type="file" name="userAvatar" />
                       <img src="https://static.thenounproject.com/png/4035892-200.png" id="output" />
                     </div>
                     <div class="settings-main-account-content-inputs">
+                      <form class="settings-main-account-content-inputs" name="updateAccount" action="/users/userUpdate?_method=PUT" method="post">
                       <div class="settings-main-account-content-input input-name">
-                        <label for="name">Name:</label>
-                        <input type="text" name="" id="name" />
+                        <label for="userName">Name:</label>
+                        <input type="text" name="userName" id="userName" value="<%=userData.name%>"/>
                       </div>
                       <div
                         class="settings-main-account-content-input input-surname"
                       >
-                        <label for="name">Surname:</label>
-                        <input type="text" name="" id="name" />
+                        <label for="surname">Surname:</label>
+                        <input type="text" name="surName" id="surname" value="<%=userData.surname%>" />
+                      </div>
+                      <div
+                        class="settings-main-account-content-input input-old-password"
+                      >
+                        <label for="oldPassword">Old Password:</label>
+                        <input type="password" name="password" id="oldPassword" required/>
                       </div>
                       <div
                         class="settings-main-account-content-input input-password"
                       >
-                        <label for="name">Old Password:</label>
-                        <input type="text" name="" id="name" />
-                      </div>
-                      <div
-                        class="settings-main-account-content-input input-password"
-                      >
-                        <label for="name">New Password:</label>
-                        <input type="text" name="" id="name" />
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" name="newPassword" id="newPassword" />
                       </div>
                       <div
                         class="settings-main-account-content-input input-email"
                       >
-                        <label for="name">Email:</label>
+                        <label for="userOldEmail">Old Email:</label>
                         <input 
                         value="<%= userData.email%>"
-                        type="text" name="" id="name" />
+                        type="email" name="email" id="userOldEmail" required/>
                       </div>
-                      <button type="submit">Submit any changes</button>
+                      <div
+                      class="settings-main-account-content-input input-email"
+                    >
+                      <label for="userNewEmail">New Email:</label>
+                      <input 
+                      type="email" name="newEmail" id="userNewEmail" />
                     </div>
-                  </div>
+                    <p class="invalidInput invalidAccountPassword hidden "><i class="fas fa-exclamation-triangle"></i> Invalid Password/Email</p>
+                      <button type="submit">Submit any changes</button>
+                    </form>
+                    </div>
+                  
+                  
                 </div>
-  
+              </div>
               <!-- HELP TAB -->
                 <div class="settings-main-help all-tab hidden">
                   <h3>FAQ:</h3>

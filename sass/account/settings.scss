@@ -12,10 +12,14 @@
     width: auto;
   }
   &-tab {
-    @media only screen and (max-width: 1400px) {
+    @media only screen and (max-width: 1550px) {
       font-size: 1.8rem;
       padding: 2rem 1.5rem;
 
+      @media only screen and (max-width: 1350px) {
+        font-size: 1.6rem;
+        padding: 2rem 1.25rem;
+      }
       @media only screen and (max-width: $bp-medium) {
         font-size: 1.6rem;
         padding: 2rem 1rem;
@@ -80,7 +84,7 @@
         }
       }
     }
-    &-notifications {
+    &-delete {
       display: flex;
       flex-direction: column;
       max-height: fit-content;
@@ -90,14 +94,37 @@
         font-weight: 400;
       }
       &-content {
-        max-height: 50rem;
-        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        margin-top: 2.5rem;
 
         & ul {
           font-size: 2rem;
           list-style-type: none;
           margin: 1.5rem 0 auto 1rem;
           margin-right: auto;
+        }
+        &-inputs {
+          & button {
+            @include account-button;
+            width: 100%;
+            height: 5rem;
+          }
+          .input-delete-checkbox {
+            display: flex;
+            flex-direction: row-reverse;
+            width: 100%;
+            margin: 1rem 0;
+            & input {
+              width: 2rem;
+              margin: 0 1rem;
+            }
+          }
+        }
+        &-input {
+          @include input-settings;
         }
       }
     }
@@ -144,8 +171,8 @@
           & img {
             position: absolute;
             object-fit: cover;
-            width: 22.5rem;
-            height: 22.5rem;
+            width: 20rem;
+            height: 20rem;
             border-radius: 50%;
             z-index: 0;
           }
@@ -156,8 +183,8 @@
           }
           &-label {
             cursor: pointer;
-            width: 22.5rem;
-            height: 22.5rem;
+            width: 20rem;
+            height: 20rem;
           }
         }
         &-inputs {
@@ -166,25 +193,7 @@
           max-width: 51rem;
         }
         &-input {
-          text-align: center;
-          margin: 0 auto;
-          & input {
-            margin: auto;
-            margin: 0rem 0 0.5rem;
-            width: 25rem;
-            height: 3rem;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            font-size: 2rem;
-            font-weight: 300;
-            color: rgb(7, 39, 39);
-            background-color: #dbbc9a;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-          }
-          & label {
-            color: rgb(7, 39, 39);
-          }
+          @include input-settings;
 
           .input-name {
           }

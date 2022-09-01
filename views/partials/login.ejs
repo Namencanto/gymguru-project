@@ -31,6 +31,7 @@
             <label for="login-input-email">E-mail</label>
             <span class="underline"></span>
           </dd>
+          <p class="invalidInput invalidLoginPassword hidden"><i class="fas fa-exclamation-triangle"></i> Invalid Password/Email</p>
         </dl>
         <dl class="inputbox">
           <dd class="inputbox-content">
@@ -38,7 +39,6 @@
             <label for="login-input-password">Password</label>
             <span class="underline underline-password"></span>
           </dd>
-
           <div class="inputbox-remember">
             <input id="login-checkbox-remember" type="checkbox" />
             <label for="login-checkbox-remember">Remember Me</label>
@@ -85,18 +85,19 @@
             <label for="signup-input-email">E-mail</label>
             <span class="underline"></span>
           </dd>
+          <p class="invalidInput emailInUse hidden"><i class="fas fa-exclamation-triangle"></i> Email already in use.</p>
         </dl>
         <dl class="inputbox">
           <dd class="inputbox-content">
             <input id="register-input-password" type="password" required placeholder=" " name="password" />
-            <label for="password">Password</label>
+            <label for="register-input-password">Password</label>
             <span class="underline underline-password"></span>
           </dd>
         </dl>
         <dl class="inputbox">
           <dd class="inputbox-content">
-            <input id="register-input-password-check" type="password-check" required placeholder=" " />
-            <label for="password-check">Confirm password</label>
+            <input id="register-input-password-check" type="password" name="password-check" required placeholder=" " />
+            <label for="register-input-password-check">Confirm password</label>
             <span class="underline underline-password"></span>
           </dd>
         </dl>
@@ -109,7 +110,7 @@
               placeholder=" "
               name="phoneNumber"
             />
-            <label for="phoneNumber">Phone Number</label>
+            <label for="register-input-tel">Phone Number</label>
             <span class="underline"></span>
           </dd>
           <small>Format: +48 123456789</small>

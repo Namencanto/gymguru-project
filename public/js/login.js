@@ -119,6 +119,56 @@ btnCancel.forEach((btn, i) => {
   });
 });
 
+// invalid input message
+const invalidEmail = function () {
+  //checking cookie exist from node server
+  if (
+    document.cookie.match(/^(.*;)?\s*emailInUse\s*=\s*[^;]+(.*)?$/) ||
+    document.cookie.match(/^(.*;)?\s*invalidLoginPassword\s*=\s*[^;]+(.*)?$/)
+  ) {
+    if (document.cookie.match(/^(.*;)?\s*emailInUse\s*=\s*[^;]+(.*)?$/)) {
+      //setting information about email is already used
+      document.querySelector(".emailInUse").classList.remove("hidden");
+
+      //display register form
+      signupForm.classList.remove("hidden");
+      signupEmail.focus();
+
+      wrap.classList.remove("login-small");
+      wrap.classList.add("signup-small");
+
+      for (let i = 0; i < btnSignupToggle.length; i++) {
+        btnLoginToggle[i].classList.add("btn-unactive");
+        btnSignupToggle[i].classList.remove("btn-unactive");
+      }
+    }
+    if (
+      document.cookie.match(/^(.*;)?\s*invalidLoginPassword\s*=\s*[^;]+(.*)?$/)
+    ) {
+      //setting information about email is already used
+      document
+        .querySelector(".invalidLoginPassword")
+        .classList.remove("hidden");
+
+      loginForm.classList.remove("hidden");
+      loginEmail.focus();
+
+      //Media query
+      wrap.classList.remove("signup-small");
+      wrap.classList.add("login-small");
+
+      // Looping all buttons and give class which give property of unactive button
+      for (let i = 0; i < btnLoginToggle.length; i++) {
+        btnSignupToggle[i].classList.add("btn-unactive");
+        btnLoginToggle[i].classList.remove("btn-unactive");
+      }
+    }
+
+    wrap.style.zIndex = 5;
+    wrap.style.opacity = 100;
+  }
+};
+
 //Checking passwords
 buttonSubmitRegister.addEventListener("click", function () {
   if (registerPassword.value != registerPasswordCheck.value) {
@@ -136,3 +186,5 @@ loginbtn(btnSignupToggle);
 
 login(buttonRegister, "register", signupForm, signupEmail);
 login(buttonLogin, "login", loginForm, loginEmail);
+
+invalidEmail();

@@ -20,6 +20,28 @@
   }
 }
 
+@mixin input-settings {
+  text-align: center;
+  margin: 0 auto;
+  & input {
+    margin: auto;
+    margin: 0rem 0 0.5rem;
+    width: 25rem;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgb(7, 39, 39);
+    background-color: #dbbc9a;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  & label {
+    color: rgb(7, 39, 39);
+  }
+}
+
 .hidden {
   display: none;
 }
@@ -103,7 +125,7 @@
         font-size: 4rem;
         text-align: center;
       }
-      font-size: 5.5rem;
+      font-size: 5rem;
       font-weight: 400;
       text-shadow: 4px 4px 6px rgba(66, 68, 90, 0.2);
     }

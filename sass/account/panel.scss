@@ -58,6 +58,10 @@
         align-items: center;
         text-align: start;
 
+        &:focus {
+          outline: none;
+        }
+
         &:hover {
           cursor: pointer;
           border-left: 0.75rem rgba($color-logo, 0.5) solid;

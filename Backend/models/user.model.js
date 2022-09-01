@@ -24,6 +24,21 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  name: {
+    type: String,
+    required: false,
+    default: "John",
+  },
+  surname: {
+    type: String,
+    required: false,
+    default: "Doe",
+  },
+  avatar: {
+    type: String,
+    required: false,
+    default: "",
+  },
   date: {
     type: Date,
     default: Date.now(),

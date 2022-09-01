@@ -232,3 +232,21 @@
   background-color: #f7c28f;
   border-color: #f7c28f;
 }
+
+// Invalid password/email message
+.invalidInput {
+  color: crimson;
+  font-weight: 400;
+  font-size: 1.8rem;
+  margin-bottom: -1.8rem;
+  display: inline-block;
+  & p {
+    margin-left: 0.5rem;
+  }
+  & i {
+    font-size: 1.8rem;
+  }
+}
+.invalidAccountPassword {
+  margin: auto auto -1.2rem auto;
+}

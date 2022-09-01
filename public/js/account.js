@@ -12,9 +12,6 @@ const mainGoals = document.querySelector(".goals");
 const mainSettings = document.querySelector(".settings");
 const allMains = document.querySelectorAll(".user-account__main");
 
-discountsTab.focus = true;
-mainDiscounts.classList.remove("hidden");
-
 const optionsFunc = function () {
   allOptions.forEach((option) => {
     option.addEventListener("click", function () {
@@ -70,9 +67,7 @@ optionsFunc();
 const referralsSettingsMain = document.querySelector(
   ".settings-main-referrals"
 );
-const notificationsSettingsMain = document.querySelector(
-  ".settings-main-notifications"
-);
+const deleteSettingsMain = document.querySelector(".settings-main-delete");
 const accountSettingsMain = document.querySelector(".settings-main-account");
 const helpSettingsMain = document.querySelector(".settings-main-help");
 const personalizationsSettingsMain = document.querySelector(
@@ -83,9 +78,7 @@ const allSettingsMains = document.querySelectorAll(".all-tab");
 ///
 
 const referralsSettingsTab = document.querySelector(".settings-tab-referrals");
-const notificationsSettingsTab = document.querySelector(
-  ".settings-tab-notifications"
-);
+const deleteSettingsTab = document.querySelector(".settings-tab-delete");
 const accountSettingsTab = document.querySelector(".settings-tab-account");
 const helpSettingsTab = document.querySelector(".settings-tab-help");
 const personalizationsSettingsTab = document.querySelector(
@@ -105,9 +98,9 @@ const settingsOptionFunc = function () {
           referralsSettingsMain.classList.remove("hidden");
         }
       }
-      if (event.target == notificationsSettingsTab) {
-        if (notificationsSettingsMain.classList.contains("hidden")) {
-          notificationsSettingsMain.classList.remove("hidden");
+      if (event.target == deleteSettingsTab) {
+        if (deleteSettingsMain.classList.contains("hidden")) {
+          deleteSettingsMain.classList.remove("hidden");
         }
       }
       if (event.target == accountSettingsTab) {
@@ -265,3 +258,36 @@ const changeUserAvatar = function () {
 };
 
 changeUserAvatar();
+
+/////////////////////////////////////////
+////////////////////////
+//////// ACCOUNT FORM INVALID MESSAGE:
+if (
+  document.cookie.match(/^(.*;)?\s*invalidAccountPassword\s*=\s*[^;]+(.*)?$/) ||
+  document.cookie.match(
+    /^(.*;)?\s*invalidDeleteAccountPassword\s*=\s*[^;]+(.*)?$/
+  )
+) {
+  settingsTab.focus();
+  mainSettings.classList.remove("hidden");
+} else {
+  discountsTab.focus();
+  mainDiscounts.classList.remove("hidden");
+}
+
+if (
+  document.cookie.match(/^(.*;)?\s*invalidAccountPassword\s*=\s*[^;]+(.*)?$/)
+) {
+  document.querySelector(".invalidAccountPassword").classList.remove("hidden");
+  accountSettingsMain.classList.remove("hidden");
+}
+if (
+  document.cookie.match(
+    /^(.*;)?\s*invalidDeleteAccountPassword\s*=\s*[^;]+(.*)?$/
+  )
+) {
+  document
+    .querySelector(".invalidDeleteAccountPassword")
+    .classList.remove("hidden");
+  deleteSettingsMain.classList.remove("hidden");
+}

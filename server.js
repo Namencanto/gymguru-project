@@ -3,16 +3,24 @@ const mongoose = require("mongoose");
 const dbConfig = require("./Backend/config/db.config.js");
 const auth = require("./Backend/middlewares/auth.js");
 const errors = require("./Backend/middlewares/errors.js");
-const unless = require("express-unless");
 const path = require("path");
 
+//upload image
+// const upload = require("./routes/upload");
+// const Grid = require("gridfs-stream");
+//
 const User = require("./Backend/models/user.model.js");
 const jwt_decode = require("jwt-decode");
 
 const app = express();
 
+const controller = require("./Backend/controllers/users.controller");
+
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
+
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
@@ -96,10 +104,13 @@ app.get("/account", auth.authenticateToken, function (req, res) {
 });
 
 app.get("/logout", function (req, res) {
+  res.clearCookie("jwt");
   res.render(path.join(__dirname, "views/pages/logout.ejs"), {
     title: "Session expired",
     cookie: false,
+    logoutInfo: controller.logoutInfo,
   });
+  controller.logoutInfo = null;
 });
 
 app.post("/users/login", async (req, res) => {
@@ -124,16 +135,6 @@ app.get("*", function (req, res, next) {
     title: "This page not exist",
   });
 });
-
-// const User = require("./Backend/models/user.model");
-
-// app.post("/", function (req, res, next) {
-//   let newUser = new User({
-//     email: res.body.email,
-//     password: req.body.password,
-//   });
-//   res.status(500).json({ message: newUser });
-// });
 
 // this variable is for online hosting like heroku or our localhost:5000
 

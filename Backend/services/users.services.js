@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth.js");
 
 async function login({ email, password }, callback) {
+  email = email.toLowerCase();
   const user = await User.findOne({ email });
 
   if (user != null) {
@@ -26,12 +27,6 @@ async function login({ email, password }, callback) {
 async function register(params, callback) {
   params.birthDate = params.birthDate.join("/");
   params.email = params.email.toLowerCase();
-  if (params.email === undefined) {
-    console.log(params.email);
-    return callback({
-      message: "email Required",
-    });
-  }
 
   const user = new User(params);
   user
@@ -44,7 +39,61 @@ async function register(params, callback) {
     });
 }
 
+async function userDelete({ email, password }, callback) {
+  const user = await User.findOne({ email });
+
+  if (user != null) {
+    if (bcrypt.compareSync(password, user.password)) {
+      await User.findOneAndDelete({ email });
+
+      return callback(null, { ...user.toJSON() });
+    } else {
+      return callback({
+        message: "Delete Invalid Email/Password!",
+      });
+    }
+  } else {
+    return callback({
+      message: "Delete Invalid Email/Password!",
+    });
+  }
+}
+
+async function userUpdate(
+  { email, password, newEmail, newPassword, userName, surName },
+  callback
+) {
+  const user = await User.findOne({ email });
+  console.log(user);
+  if (user != null) {
+    if (bcrypt.compareSync(password, user.password)) {
+      await User.findOneAndUpdate(
+        { email },
+        {
+          $set: {
+            email: newEmail,
+            password: newPassword,
+            name: userName,
+            surname: surName,
+          },
+        }
+      );
+      return callback(null, { ...user.toJSON() });
+    } else {
+      return callback({
+        message: "Account Invalid Email/Password!",
+      });
+    }
+  } else {
+    return callback({
+      message: "Account Invalid Email/Password!",
+    });
+  }
+}
+
 module.exports = {
   login,
   register,
+  userDelete,
+  userUpdate,
 };
