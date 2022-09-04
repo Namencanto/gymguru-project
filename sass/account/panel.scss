@@ -13,7 +13,7 @@
     &-avatar {
       height: 10rem;
       width: 10rem;
-
+      object-fit: cover;
       // border: 1px solid #040d20;
       border-radius: 50%;
       padding: 0;
@@ -99,7 +99,7 @@
     display: flex;
     justify-content: center;
     & a {
-      margin: 0 1rem 2.5rem 1rem;
+      margin: 2.5rem 1rem 2.5rem 1rem;
       font-size: 2.5rem;
       color: #000;
 

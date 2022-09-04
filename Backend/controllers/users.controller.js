@@ -72,13 +72,55 @@ exports.userDelete = (req, res, next) => {
   });
 };
 
-exports.userUpdate = (req, res, next) => {
+exports.userUpdate = async (req, res, next) => {
   const { email, password } = req.body;
-  let { newPassword, newEmail, userName, surName, userAvatar } = req.body;
+  let { newPassword, newEmail, number, newNumber, userName, surName } =
+    req.body;
+
+  // Duplicate checking
+
+  // Number
+  let checkBoolean = false;
+  let maxAge = {
+    maxAge: 1000 * 10, // would expire after 10 seconds
+  };
+
+  const phoneNumberCheck = await User.find({ phoneNumber: newNumber });
+  phoneNumberCheck.forEach((check) => {
+    if (check.email !== email) {
+      checkBoolean = true;
+
+      res.clearCookie("phoneDuplicate");
+      res.clearCookie("emailDuplicate");
+      res.clearCookie("invalidAccountPassword");
+
+      res.cookie("accountInvalid", "hi", maxAge);
+      res.cookie("phoneDuplicate", "hi", maxAge);
+    }
+  });
+  const emailNumberCheck = await User.find({ email: newEmail });
+  emailNumberCheck.forEach((check) => {
+    if (check.email !== email) {
+      checkBoolean = true;
+
+      res.clearCookie("phoneDuplicate");
+      res.clearCookie("emailDuplicate");
+      res.clearCookie("invalidAccountPassword");
+
+      res.cookie("accountInvalid", "hi", maxAge);
+      res.cookie("emailDuplicate", "hi", maxAge);
+    }
+  });
+  if (checkBoolean === true) {
+    return res.redirect("/account");
+  }
 
   //Guard classes
   if (newEmail === "") {
     newEmail = email;
+  }
+  if (newNumber === "") {
+    newNumber = number;
   }
   if (newPassword === "") {
     newPassword = password;
@@ -89,16 +131,21 @@ exports.userUpdate = (req, res, next) => {
   if (surName === "") {
     surName = "Doe";
   }
-  if (userAvatar === "") {
-    userAvatar = "https://static.thenounproject.com/png/4035892-200.png";
-  }
   //
 
   let salt = bcrypt.genSaltSync(10);
   newPassword = bcrypt.hashSync(newPassword, salt);
 
   userServices.userUpdate(
-    { email, password, newEmail, newPassword, userName, surName },
+    {
+      email,
+      password,
+      newEmail,
+      newPassword,
+      newNumber,
+      userName,
+      surName,
+    },
     (error, results) => {
       console.log(results);
       if (error) {

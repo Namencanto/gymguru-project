@@ -89,14 +89,19 @@
         </dl>
         <dl class="inputbox">
           <dd class="inputbox-content">
-            <input id="register-input-password" type="password" required placeholder=" " name="password" />
+            <input id="register-input-password" type="password" required placeholder=" " name="password"  minlength="8" maxlength="1024" title="password must have one special character, uppercase and lowercase letter, 8 character length"/>
             <label for="register-input-password">Password</label>
             <span class="underline underline-password"></span>
           </dd>
+          <p class="invalidInput invalid-password invalid-password-length hidden"><i class="fas fa-exclamation-triangle"></i> Password must contain at least 8 character length</p>
+          <p class="invalidInput invalid-password invalid-password-lowercase hidden"><i class="fas fa-exclamation-triangle"></i> Password must contain at least one lowercase letter</p>
+          <p class="invalidInput invalid-password invalid-password-uppercase hidden"><i class="fas fa-exclamation-triangle"></i> Password must contain at least one uppercase letter</p>
+          <p class="invalidInput invalid-password invalid-password-number hidden"><i class="fas fa-exclamation-triangle"></i> Password must contain at least one number (0-9)</p>
+          <p class="invalidInput invalid-password invalid-password-special hidden"><i class="fas fa-exclamation-triangle"></i> Password must contain at least one special character .!@#$%^&*()_</p>
         </dl>
         <dl class="inputbox">
           <dd class="inputbox-content">
-            <input id="register-input-password-check" type="password" name="password-check" required placeholder=" " />
+            <input id="register-input-password-check" type="password" required placeholder=" "  name="password-check" />
             <label for="register-input-password-check">Confirm password</label>
             <span class="underline underline-password"></span>
           </dd>
@@ -106,14 +111,18 @@
             <input
               id="register-input-tel"
               type="tel"
-              pattern="[+][0-9]{2} [0-9]{9}"
+              pattern="[+][0-9]{1,4} [0-9]{4,20}"
               placeholder=" "
               name="phoneNumber"
+              title="Remember to write + before area code. 1 to 4 max length for area code, 1 to 20 max length for telephone number"
             />
             <label for="register-input-tel">Phone Number</label>
             <span class="underline"></span>
           </dd>
-          <small>Format: +48 123456789</small>
+          <p class="invalidInput numberInUse hidden"><i class="fas fa-exclamation-triangle"></i> Number already has declared</p>
+          <br>
+          <small>Example format: +48 123456789 </small>
+
         </dl>
 
         <dl class="inputbox">
@@ -135,6 +144,7 @@
             <input
               type="text"
               pattern="[0-9]*"
+              minlength="2"
               maxlength="2"
               size="2"
               class="date-field"
@@ -149,6 +159,7 @@
             <input
               type="text"
               pattern="[0-9]*"
+              minlength="2"
               maxlength="2"
               size="2"
               class="date-field"
@@ -163,6 +174,7 @@
             <input
               type="text"
               pattern="[0-9]*"
+              minlength="4"
               maxlength="4"
               size="4"
               class="date-field date-field--year"

@@ -237,16 +237,22 @@
 .invalidInput {
   color: crimson;
   font-weight: 400;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: -1.8rem;
   display: inline-block;
   & p {
     margin-left: 0.5rem;
   }
   & i {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
-.invalidAccountPassword {
+
+.invalidAccountInput {
+  text-align: center;
   margin: auto auto -1.2rem auto;
+}
+
+.numberInUse {
+  margin: 0;
 }

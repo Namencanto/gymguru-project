@@ -14,7 +14,7 @@
           <div class="user-account__panel-info">
             <img
               class="user-account__panel-info-avatar"
-              src="https://static.thenounproject.com/png/4035892-200.png"
+              src="<%= userData.avatar %> "
               alt="user avatar"
             />
             <div class="user-account__panel-info-text">
@@ -268,13 +268,18 @@
                     <div class="settings-main-account-content-avatar">
                       <label
                         class="settings-main-account-content-avatar-label"
-                        for="file"
+                        for="avatarek"
                       >
                         <span class="glyphicon glyphicon-camera"></span>
                         <span>Change Image</span>
                       </label>
-                      <input id="file" type="file" name="userAvatar" />
-                      <img src="https://static.thenounproject.com/png/4035892-200.png" id="output" />
+                      <form enctype="multipart/form-data" action="/upload" method="post">
+                      <input id="avatarek" type="file" name="avatarek" onchange="this.form.submit();"/>
+                    </form>
+                    
+                      <img 
+                      src="<%= userData.avatar %> " 
+                      id="output" />
                     </div>
                     <div class="settings-main-account-content-inputs">
                       <form class="settings-main-account-content-inputs" name="updateAccount" action="/users/userUpdate?_method=PUT" method="post">
@@ -291,7 +296,7 @@
                       <div
                         class="settings-main-account-content-input input-old-password"
                       >
-                        <label for="oldPassword">Old Password:</label>
+                        <label for="oldPassword">Password:</label>
                         <input type="password" name="password" id="oldPassword" required/>
                       </div>
                       <div
@@ -301,25 +306,59 @@
                         <input type="password" name="newPassword" id="newPassword" />
                       </div>
                       <div
-                        class="settings-main-account-content-input input-email"
+                        class="settings-main-account-content-input input-email hidden"
                       >
                         <label for="userOldEmail">Old Email:</label>
                         <input 
                         value="<%= userData.email%>"
-                        type="email" name="email" id="userOldEmail" required/>
+                        type="email" name="email" id="userOldEmail" readonly required/>
                       </div>
                       <div
                       class="settings-main-account-content-input input-email"
                     >
-                      <label for="userNewEmail">New Email:</label>
+                      <label for="userNewEmail">Email:</label>
                       <input 
-                      type="email" name="newEmail" id="userNewEmail" />
+                      value="<%= userData.email%>" type="email" name="newEmail" id="userNewEmail" />
                     </div>
-                    <p class="invalidInput invalidAccountPassword hidden "><i class="fas fa-exclamation-triangle"></i> Invalid Password/Email</p>
+                    <div
+                        class="settings-main-account-content-input input-number hidden "
+                      >
+                        <label for="userOldNumber">Old Phone Number:</label>
+                        <input 
+                        value="<%= userData.phoneNumber%>"
+                        pattern="[+][0-9]{1,4} [0-9]{4,20}" type="tel" name="number" id="userOldNumber" readonly required/>
+                      </div>
+                      <div
+                        class="settings-main-account-content-input input-number "
+                      >
+                        <label for="userNewNumber">Phone Number:</label>
+                        <input 
+                        value="<%= userData.phoneNumber%>"
+                        pattern="[+][0-9]{1,4} [0-9]{4,20}" type="tel" name="newNumber" id="userNewNumber"  />
+                      </div>
+
+                      <p class="invalidInput invalidAccountInput invalidAccountPassword hidden "><i class="fas fa-exclamation-triangle"></i>
+                        Invalid Password
+                      </p>
+                      <p class="invalidInput invalidAccountInput invalidAccountNumber hidden "><i class="fas fa-exclamation-triangle"></i>
+                        This number has already declared
+                      </p>
+                      <p class="invalidInput invalidAccountInput invalidAccountEmail hidden "><i class="fas fa-exclamation-triangle"></i>
+                        This email has already declared
+                      </p>
+                      <p class="invalidInput invalidAccountInput invalidFileInput hidden "><i class="fas fa-exclamation-triangle"></i>
+                        Invalid file type, you can set only (.jpg/.png/.jfif/.gif)
+                      </p>
+                      
+                      
+
                       <button type="submit">Submit any changes</button>
                     </form>
                     </div>
-                  
+                    <!-- <form enctype="multipart/form-data" action="/upload" method="post">
+                      <input id="avatarek" type="file" name="avatarek" />
+                      <button type="submit"></button>
+                    </form> -->
                   
                 </div>
               </div>

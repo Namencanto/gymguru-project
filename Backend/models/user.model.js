@@ -15,6 +15,8 @@ const UserSchema = new Schema({
   phoneNumber: {
     type: String,
     required: false,
+    unique: true,
+    default: "",
   },
   gender: {
     type: String,
@@ -37,7 +39,7 @@ const UserSchema = new Schema({
   avatar: {
     type: String,
     required: false,
-    default: "",
+    default: "https://static.thenounproject.com/png/4035892-200.png",
   },
   date: {
     type: Date,

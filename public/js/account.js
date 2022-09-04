@@ -231,43 +231,66 @@ for (const e of faqInput) {
 /////////////////////////////////////////
 ////////////////////////
 //////// USER AVATAR LOGIC:
-const userAvatar = document.querySelector("#file");
-const userNavAvatar = document.querySelector(
-  ".user-account__panel-info-avatar"
-);
-let image = document.querySelector("#output");
+// const userAvatar = document.querySelector("#avatarek");
+// const userNavAvatar = document.querySelector(
+//   ".user-account__panel-info-avatar"
+// );
+// let image = document.querySelector("#output");
 
-const changeUserAvatar = function () {
-  if (localStorage.hasOwnProperty("userAvatar")) {
-    image.src = localStorage.getItem("userAvatar");
-    userNavAvatar.src = localStorage.getItem("userAvatar");
-  }
+// const changeUserAvatar = function () {
+//   if (localStorage.hasOwnProperty("userAvatar")) {
+//     image.src = localStorage.getItem("userAvatar");
+//     userNavAvatar.src = localStorage.getItem("userAvatar");
+//   }
 
-  userAvatar.addEventListener("change", function (event) {
-    const tgt = event.target || window.event.srcElement,
-      files = tgt.files;
+//   userAvatar.addEventListener("change", function (event) {
+//     const tgt = event.target || window.event.srcElement,
+//       files = tgt.files;
 
-    const fr = new FileReader();
-    fr.addEventListener("load", function () {
-      userNavAvatar.src = fr.result;
-      image.src = fr.result;
-      localStorage.setItem("userAvatar", fr.result);
-    });
-    fr.readAsDataURL(files[0]);
-  });
-};
+//     const fr = new FileReader();
+//     fr.addEventListener("load", function () {
+//       userNavAvatar.src = fr.result;
+//       image.src = fr.result;
+//       localStorage.setItem("userAvatar", fr.result);
+//     });
+//     fr.readAsDataURL(files[0]);
+//   });
+// };
 
-changeUserAvatar();
+// changeUserAvatar();
 
 /////////////////////////////////////////
 ////////////////////////
 //////// ACCOUNT FORM INVALID MESSAGE:
-if (
-  document.cookie.match(/^(.*;)?\s*invalidAccountPassword\s*=\s*[^;]+(.*)?$/) ||
-  document.cookie.match(
-    /^(.*;)?\s*invalidDeleteAccountPassword\s*=\s*[^;]+(.*)?$/
-  )
-) {
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+}
+
+const invalidAccountPasswordMessage = document.querySelector(
+  ".invalidAccountPassword"
+);
+const invalidAccountDeletePasswordMessage = document.querySelector(
+  ".invalidDeleteAccountPassword"
+);
+const invalidAccountNumberMessage = document.querySelector(
+  ".invalidAccountNumber"
+);
+const invalidAccountEmailMessage = document.querySelector(
+  ".invalidAccountEmail"
+);
+const invalidAccountFileMessage = document.querySelector(".invalidFileInput");
+const invalidInputs = document.querySelectorAll(".invalidAccountInput");
+
+const clearInputs = function () {
+  invalidInputs.forEach((input) => {
+    input.classList.add("hidden");
+  });
+};
+
+if (getCookie("accountInvalid")) {
   settingsTab.focus();
   mainSettings.classList.remove("hidden");
 } else {
@@ -275,19 +298,26 @@ if (
   mainDiscounts.classList.remove("hidden");
 }
 
-if (
-  document.cookie.match(/^(.*;)?\s*invalidAccountPassword\s*=\s*[^;]+(.*)?$/)
-) {
-  document.querySelector(".invalidAccountPassword").classList.remove("hidden");
+if (getCookie("phoneDuplicate")) {
+  clearInputs();
+  invalidAccountNumberMessage.classList.remove("hidden");
   accountSettingsMain.classList.remove("hidden");
 }
-if (
-  document.cookie.match(
-    /^(.*;)?\s*invalidDeleteAccountPassword\s*=\s*[^;]+(.*)?$/
-  )
-) {
-  document
-    .querySelector(".invalidDeleteAccountPassword")
-    .classList.remove("hidden");
+if (getCookie("emailDuplicate")) {
+  clearInputs();
+  invalidAccountEmailMessage.classList.remove("hidden");
+  accountSettingsMain.classList.remove("hidden");
+}
+if (getCookie("invalidAccountPassword")) {
+  clearInputs();
+  invalidAccountPasswordMessage.classList.remove("hidden");
+  accountSettingsMain.classList.remove("hidden");
+}
+if (getCookie("invalidImgFile")) {
+  invalidAccountFileMessage.classList.remove("hidden");
+  accountSettingsMain.classList.remove("hidden");
+}
+if (getCookie("invalidDeleteAccountPassword")) {
+  invalidAccountDeletePasswordMessage.classList.remove("hidden");
   deleteSettingsMain.classList.remove("hidden");
 }

@@ -58,13 +58,12 @@ async function userDelete({ email, password }, callback) {
     });
   }
 }
-
 async function userUpdate(
-  { email, password, newEmail, newPassword, userName, surName },
+  { email, password, newEmail, newPassword, newNumber, userName, surName },
   callback
 ) {
   const user = await User.findOne({ email });
-  console.log(user);
+  // console.log(user);
   if (user != null) {
     if (bcrypt.compareSync(password, user.password)) {
       await User.findOneAndUpdate(
@@ -73,6 +72,7 @@ async function userUpdate(
           $set: {
             email: newEmail,
             password: newPassword,
+            phoneNumber: newNumber,
             name: userName,
             surname: surName,
           },
