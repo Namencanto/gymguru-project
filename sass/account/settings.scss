@@ -30,12 +30,15 @@
         }
       }
     }
+    &-active {
+      background-color: #cfb08d;
+    }
     cursor: pointer;
     text-align: center;
     list-style-type: none;
     margin: 2rem 1rem 0 0;
     padding: 2rem 2rem;
-    background-color: #cfb08dab;
+    background-color: #dbbc98;
     width: 100%;
     &:nth-child(1) {
       @media only screen and (max-width: $bp-small) {
@@ -44,7 +47,7 @@
       margin-left: 1rem;
     }
     &:hover {
-      background-color: #cfb08d;
+      background-color: #bb9d7cab;
     }
     &-referrals {
     }
@@ -107,17 +110,45 @@
           margin-right: auto;
         }
         &-inputs {
+          @media only screen and (max-width: $bp-small) {
+            margin-bottom: 1rem;
+            .input-delete {
+              margin: 0;
+              width: 25rem;
+            }
+          }
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 51rem;
+          margin: 0 auto;
+          // width: 90%;
           & button {
+            @media only screen and (max-width: $bp-small) {
+              width: 120%;
+              margin-left: -2.4rem;
+            }
             @include account-button;
             width: 100%;
+            margin-top: 1.5rem;
+            max-width: 50rem;
+
             height: 5rem;
           }
           .input-delete-checkbox {
+            @media only screen and (max-width: $bp-small) {
+              margin: 0;
+              margin-top: 1rem;
+              text-align: start;
+              width: 25rem;
+            }
             display: flex;
             flex-direction: row-reverse;
             width: 100%;
             margin: 1rem 0;
             & input {
+              @media only screen and (max-width: $bp-small) {
+                width: 3rem;
+              }
               width: 2rem;
               margin: 0 1rem;
             }
@@ -334,6 +365,15 @@
           }
           .faq {
             &-heading {
+              @media only screen and (max-width: $bp-small) {
+                font-size: 1.6rem;
+                &-long-title {
+                  max-width: 25rem;
+                  text-indent: 0;
+                  padding-left: 2rem;
+                }
+              }
+
               margin-top: 0.5rem;
               font-weight: 400;
               font-size: 2rem;
@@ -343,6 +383,11 @@
               color: rgb(7, 39, 39);
             }
             &-arrow {
+              &-long-title {
+                @media only screen and (max-width: $bp-small) {
+                  top: -5.5rem;
+                }
+              }
               width: 1rem;
               height: 1rem;
               transition: -webkit-transform 0.8s;
@@ -443,7 +488,7 @@
               }
               & + label {
                 &:after {
-                  margin-left: 44px;
+                  margin-left: 4.1rem;
                 }
               }
             }

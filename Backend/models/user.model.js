@@ -41,6 +41,8 @@ const UserSchema = new Schema({
     required: false,
     default: "https://static.thenounproject.com/png/4035892-200.png",
   },
+  todoList: [{ itemText: String, checkedOff: String, deleted: String }],
+
   date: {
     type: Date,
     default: Date.now(),

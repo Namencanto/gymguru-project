@@ -1,32 +1,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const jwt_decode = require("jwt-decode");
+const methodOverride = require("method-override");
+const { unlink } = require("node:fs");
+
 const dbConfig = require("./Backend/config/db.config.js");
 const auth = require("./Backend/middlewares/auth.js");
 const errors = require("./Backend/middlewares/errors.js");
-const path = require("path");
-
-const { unlink } = require("node:fs");
-
-//upload image
-// const upload = require("./Backend/middlewares/upload.js");
-//
 const User = require("./Backend/models/user.model.js");
-// const File = require("./Backend/middlewares/upload.js");
-
-// import multer storage
+const controller = require("./Backend/controllers/users.controller");
 const { upload } = require("./Backend/middlewares/multerLogic.js");
 
-const jwt_decode = require("jwt-decode");
-
 const app = express();
-
-const controller = require("./Backend/controllers/users.controller");
-
-const cookieParser = require("cookie-parser");
-app.use(cookieParser());
-
-const methodOverride = require("method-override");
-app.use(methodOverride("_method"));
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
@@ -45,10 +32,8 @@ mongoose
     }
   );
 
-// middleware for authenticating token submitted with requests
-/**
- * Conditionally skip a middleware when a condition is met.
- */
+app.use(cookieParser());
+app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -68,6 +53,8 @@ app.use((req, res, next) => {
   } else cookie = false;
   next();
 });
+
+//
 
 app.get("/", function (req, res) {
   res.render(path.join(__dirname, "views/pages/index.ejs"), {
@@ -89,7 +76,7 @@ app.get("/offert", function (req, res) {
 });
 
 // Secure with middleware user page
-app.get("/account", auth.authenticateToken, async function (req, res) {
+app.get("/account", auth.authenticateToken, async function (req, res, next) {
   // Decoding token to get information about user
   let decodeToken = req.cookies["jwt"];
   let decodedEmail = jwt_decode(decodeToken).data;
@@ -97,22 +84,33 @@ app.get("/account", auth.authenticateToken, async function (req, res) {
   // Search token account in database
   User.findOne({ email: decodedEmail }, async (error, data) => {
     if (error) {
-      console.log(error);
+      return next(error);
     } else {
+      if (req.cookies["todoList"]) {
+        console.log(req.cookies["todoList"]);
+        let todoList = JSON.parse(req.cookies["todoList"]);
+
+        await User.updateOne(
+          { email: data.email },
+          { $set: { todoList: todoList } }
+        );
+        res.clearCookie("todoList");
+        return res.redirect("/account");
+      }
       // Render page and pass user data
       res.render(path.join(__dirname, "views/pages/account.ejs"), {
         title: "Welcome",
         userData: data,
-        avatar: "avatar",
         cookie: true,
       });
-      // });
     }
   });
 });
 
 app.get("/logout", function (req, res) {
   res.clearCookie("jwt");
+  res.clearCookie("todoList");
+
   res.render(path.join(__dirname, "views/pages/logout.ejs"), {
     title: "Session expired",
     cookie: false,
@@ -168,23 +166,6 @@ app.post("/upload", upload.single("avatarek"), async function (req, res, next) {
   }
 });
 
-// app.post("/users/login", async (req, res) => {
-//   const user = users.find((user) => user.name === req.body.name);
-
-//   if (user == null) {
-//     return res.status(400).send("Cannot find user");
-//   }
-//   try {
-//     if (await bcrypt.compare(req.body.password, user.password)) {
-//       res.send("Success");
-//     } else {
-//       res.send("Not Allowed");
-//     }
-//   } catch {
-//     res.status(500).send();
-//   }
-// });
-
 app.get("*", function (req, res, next) {
   res.render(path.join(__dirname, "views/pages/404error.ejs"), {
     title: "This page not exist",
@@ -192,8 +173,5 @@ app.get("*", function (req, res, next) {
 });
 
 // this variable is for online hosting like heroku or our localhost:5000
-
-// const PORT = process.env.PORT || 8080;
-// app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
-app.listen(process.env.PORT || 8080);
-console.log("Server is listening on port 8080");
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));

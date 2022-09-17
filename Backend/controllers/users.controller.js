@@ -43,13 +43,13 @@ exports.login = (req, res, next) => {
     }
     if (!req.cookies["jwt"]) {
       let options = {
-        maxAge: 1000 * 60 * 60, // would expire after 1 hour
-        httpOnly: true, // The cookie only accessible by the web server
-        signed: false, // Indicates if the cookie should be signed
+        maxAge: 1000 * 60 * 60,
+        httpOnly: true,
+        signed: false,
       };
 
       // Set cookie
-      res.cookie("jwt", results.token, options); // options is optional
+      res.cookie("jwt", results.token, options);
     }
 
     return res.redirect("/account");

@@ -1,5 +1,6 @@
 .todo {
   &-container {
+    overflow: auto;
     & h3 {
       font-size: 3rem;
       font-weight: 400;
@@ -39,6 +40,8 @@
 
     & li {
       width: auto;
+
+      overflow-wrap: anywhere;
       border-bottom: 1px solid rgba(0, 0, 0, 0.2);
       padding: 10px 0;
       display: flex;

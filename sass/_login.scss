@@ -11,17 +11,41 @@ $sub-yellow: #ffca00;
 //   cursor: default !important;
 // }
 
+//subpage styling
+.subpage__login {
+  @media only screen and (max-width: $bp-small) {
+    z-index: 100000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform: scale(0.65) !important;
+    @media only screen and (max-width: 450px) {
+      transform: scale(0.5) !important;
+
+      @media only screen and (max-width: 320px) {
+        transform: scale(0.4) !important;
+      }
+    }
+  }
+}
+//
+
 .hidden {
   display: none;
 }
 .btn-unactive {
   background-color: #e4cc9f !important;
 }
-
+.about-login {
+  @media only screen and (max-width: $bp-small) {
+  }
+}
 #wrap {
   @media only screen and (max-width: $bp-small) {
     font-size: 3.2rem;
   }
+  display: block;
   z-index: -1;
   opacity: 0;
   transition: opacity 0.5s;

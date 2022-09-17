@@ -52,6 +52,84 @@ body {
 .logout-page {
   background-color: #ddd; }
 
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem 4rem 0 4rem; }
+  @media only screen and (max-width: 50em) {
+    .header__subpage a {
+      font-size: 55%; }
+    .header__subpage h2 {
+      margin-top: -2rem; } }
+
+@media only screen and (max-width: 50em) and (max-width: 37.5em) {
+  .header__subpage .header__logo {
+    margin-bottom: -1.5rem; }
+    .header__subpage .header__logo a {
+      font-size: 65%; }
+  .header__subpage .header__navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row; }
+  .header__subpage li {
+    margin: 0 !important; }
+  .header__subpage h2 {
+    margin-top: -4rem; }
+  .header__subpage a {
+    text-align: center;
+    font-size: 50%; }
+  .header__subpage .header__sign-btn {
+    transform: scale(0.5); }
+  .header__subpage .btn-search:focus ~ .input-search,
+  .header__subpage .input-search:focus {
+    width: 125vw; } }
+  @media only screen and (max-width: 37.5em) {
+    .header {
+      flex-direction: column;
+      justify-content: center; } }
+  .header__logo {
+    margin-right: auto;
+    font-size: 4rem; }
+    @media only screen and (max-width: 50em) {
+      .header__logo {
+        font-size: 5rem; } }
+  @media only screen and (max-width: 50em) and (max-width: 37.5em) {
+    .header__logo {
+      margin: auto;
+      font-size: 10rem; } }
+    .header__logo a {
+      padding: 1rem;
+      text-decoration: none;
+      color: #eb699e; }
+  .header__navbar {
+    display: flex;
+    font-weight: 300;
+    text-transform: uppercase; }
+    .header__navbar li {
+      font-size: 1.6rem;
+      list-style-type: none;
+      margin-right: 4rem; }
+      @media only screen and (max-width: 62.5em) {
+        .header__navbar li {
+          font-size: 1.8rem; } }
+  @media only screen and (max-width: 62.5em) and (max-width: 50em) {
+    .header__navbar li {
+      font-size: 2rem; } }
+  @media only screen and (max-width: 62.5em) and (max-width: 50em) and (max-width: 37.5em) {
+    .header__navbar li {
+      font-size: 5rem;
+      margin-bottom: 2rem; } }
+      .header__navbar li:nth-last-child(n + 2) {
+        margin-right: 2rem; }
+      .header__navbar li a {
+        text-align: center;
+        color: #000;
+        text-decoration: none;
+        display: block;
+        padding: 1.5rem 1.5rem; }
+
 .footer {
   background: white;
   background: linear-gradient(180deg, white 14%, #232323 14%);
@@ -60,6 +138,9 @@ body {
   grid-template-columns: 1fr 70rem 1fr; }
   .footer__container {
     grid-column: 2; }
+    @media only screen and (max-width: 37.5em) {
+      .footer__container {
+        scale: 1.3; } }
   .footer__textbox {
     padding-top: 8.5rem;
     margin-top: 9rem;
@@ -127,55 +208,6 @@ body {
         .footer__under p a:hover::before {
           transform-origin: left;
           transform: scaleX(1); }
-
-.header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1rem 4rem 0 4rem; }
-  @media only screen and (max-width: 37.5em) {
-    .header {
-      flex-direction: column;
-      justify-content: center; } }
-  .header__logo {
-    margin-right: auto;
-    font-size: 4rem; }
-    @media only screen and (max-width: 50em) {
-      .header__logo {
-        font-size: 5rem; } }
-  @media only screen and (max-width: 50em) and (max-width: 37.5em) {
-    .header__logo {
-      margin: auto;
-      font-size: 10rem; } }
-    .header__logo a {
-      padding: 1rem;
-      text-decoration: none;
-      color: #eb699e; }
-  .header__navbar {
-    display: flex;
-    font-weight: 300;
-    text-transform: uppercase; }
-    .header__navbar li {
-      font-size: 1.6rem;
-      list-style-type: none;
-      margin-right: 4rem; }
-      @media only screen and (max-width: 62.5em) {
-        .header__navbar li {
-          font-size: 1.8rem; } }
-  @media only screen and (max-width: 62.5em) and (max-width: 50em) {
-    .header__navbar li {
-      font-size: 2rem; } }
-  @media only screen and (max-width: 62.5em) and (max-width: 50em) and (max-width: 37.5em) {
-    .header__navbar li {
-      font-size: 5rem;
-      margin-bottom: 2rem; } }
-      .header__navbar li:nth-last-child(n + 2) {
-        margin-right: 2rem; }
-      .header__navbar li a {
-        color: #000;
-        text-decoration: none;
-        display: block;
-        padding: 1.5rem 1.5rem; }
 
 .container-main {
   background-image: url("/assets/images/banner.jpg");
@@ -600,13 +632,16 @@ body {
   transition: ease-in all 0.5s; }
   @media only screen and (max-width: 37.5em) {
     .btn--white {
+      font-weight: 400; } }
+  @media only screen and (max-width: 37.5em) {
+    .btn--white {
       font-size: 2.2rem;
-      font-weight: 400;
       border: #eb699e solid 0.3rem; } }
   .btn--white:hover {
-    background: #fff;
-    color: #eb699e;
     transition: ease-in all 0.5s; }
+  .btn--white:hover {
+    background: #fff;
+    color: #eb699e; }
 
 .btn--dark {
   font-weight: 300;
@@ -626,9 +661,10 @@ body {
       font-size: 2.2rem;
       border: #eb699e solid 0.3rem; } }
   .btn--dark:hover {
-    background: #000;
-    color: #fff;
     transition: ease-in all 0.5s; }
+  .btn--dark:hover {
+    background: #000;
+    color: #fff; }
 
 .btn--contact {
   cursor: pointer;
@@ -821,32 +857,6 @@ body {
   display: grid;
   grid-template-rows: repeat(7, 12vh);
   grid-template-columns: repeat(6, 1fr); }
-  @media only screen and (max-width: 50em) {
-    .about__header a {
-      font-size: 55%; }
-    .about__header h2 {
-      margin-top: -2rem; } }
-
-@media only screen and (max-width: 50em) and (max-width: 37.5em) {
-  .about__header .header__logo {
-    margin-bottom: -1.5rem; }
-  .about__header .header__navbar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-direction: row; }
-  .about__header li {
-    margin: 0 !important; }
-  .about__header h2 {
-    margin: 0; }
-  .about__header a {
-    text-align: center;
-    font-size: 50%; }
-  .about__header .header__sign-btn {
-    transform: scale(0.5); }
-  .about__header .btn-search:focus ~ .input-search,
-  .about__header .input-search:focus {
-    width: 125vw; } }
   .about__container {
     box-shadow: 0px 0px 20px -5px rgba(66, 68, 90, 0.5);
     grid-row: 2 / 9;
@@ -1076,6 +1086,21 @@ body {
     font-weight: bold !important;
     color: #f67c00 !important; }
 
+@media only screen and (max-width: 37.5em) {
+  .subpage__login {
+    z-index: 100000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform: scale(0.65) !important; } }
+  @media only screen and (max-width: 37.5em) and (max-width: 450px) {
+    .subpage__login {
+      transform: scale(0.5) !important; } }
+  @media only screen and (max-width: 37.5em) and (max-width: 450px) and (max-width: 320px) {
+    .subpage__login {
+      transform: scale(0.4) !important; } }
+
 .hidden {
   display: none; }
 
@@ -1083,6 +1108,7 @@ body {
   background-color: #e4cc9f !important; }
 
 #wrap {
+  display: block;
   z-index: -1;
   opacity: 0;
   transition: opacity 0.5s;
@@ -1477,6 +1503,11 @@ body {
     font-size: 2.5rem;
     transform: translateY(1rem); } }
 
+.user-account__panel .active-tab {
+  border-left: 0.75rem rgba(235, 105, 158, 0.9) solid; }
+  .user-account__panel .active-tab:hover {
+    border-left: 0.75rem rgba(235, 105, 158, 0.9) solid; }
+
 .user-account__panel-info {
   grid-row: 1;
   display: flex;
@@ -1486,6 +1517,12 @@ body {
   @media only screen and (max-width: 75em) {
     .user-account__panel-info {
       flex-direction: column; } }
+  @media only screen and (max-width: 75em) and (max-width: 37.5em) {
+    .user-account__panel-info {
+      flex-direction: row;
+      justify-content: space-around;
+      margin: 1rem 0;
+      margin-bottom: 2.5rem; } }
   .user-account__panel-info-avatar {
     height: 10rem;
     width: 10rem;
@@ -1523,29 +1560,26 @@ body {
       display: flex;
       align-items: center;
       text-align: start; }
-      .user-account__panel ul li button:focus {
-        outline: none; }
       .user-account__panel ul li button:hover {
         cursor: pointer;
         border-left: 0.75rem rgba(235, 105, 158, 0.5) solid;
         background-color: rgba(235, 105, 158, 0.25); }
+        @media only screen and (max-width: 37.5em) {
+          .user-account__panel ul li button:hover {
+            background-color: transparent; } }
       .user-account__panel ul li button:focus {
-        border-left: 0.75rem rgba(235, 105, 158, 0.9) solid; }
+        outline: none; }
       .user-account__panel ul li button h4 {
         margin-right: auto;
         text-transform: uppercase;
         font-size: 2rem; }
-        @media only screen and (max-width: 37.5em) {
-          .user-account__panel ul li button h4 {
-            margin-right: auto;
-            width: 12.5rem; } }
       .user-account__panel ul li button i {
         font-style: normal;
         margin: 0 1rem;
         font-size: 4rem; }
         @media only screen and (max-width: 37.5em) {
           .user-account__panel ul li button i {
-            margin-left: auto; } }
+            margin-left: 2rem; } }
 
 .user-account__panel-icons {
   grid-row: 3;
@@ -1712,6 +1746,7 @@ body {
   color: #000; }
 
 .todo-container {
+  overflow: auto;
   width: 75%;
   height: 70%;
   background: #ccaf90;
@@ -1762,6 +1797,7 @@ body {
   max-width: 40rem; }
   .todo-items li {
     width: auto;
+    overflow-wrap: anywhere;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding: 10px 0;
     display: flex;
@@ -1835,7 +1871,7 @@ body {
   list-style-type: none;
   margin: 2rem 1rem 0 0;
   padding: 2rem 2rem;
-  background-color: #cfb08dab;
+  background-color: #dbbc98;
   width: 100%; }
   @media only screen and (max-width: 1550px) {
     .settings-tab {
@@ -1853,13 +1889,15 @@ body {
   @media only screen and (max-width: 1550px) and (max-width: 50em) and (max-width: 37.5em) {
     .settings-tab {
       margin: 0.5rem 2rem; } }
+  .settings-tab-active {
+    background-color: #cfb08d; }
   .settings-tab:nth-child(1) {
     margin-left: 1rem; }
     @media only screen and (max-width: 37.5em) {
       .settings-tab:nth-child(1) {
         margin-left: 2rem; } }
   .settings-tab:hover {
-    background-color: #cfb08d; }
+    background-color: #bb9d7cab; }
 
 .settings-main {
   background-color: #e4c39e;
@@ -1900,33 +1938,59 @@ body {
         list-style-type: none;
         margin: 1.5rem 0 auto 1rem;
         margin-right: auto; }
-      .settings-main-delete-content-inputs button {
-        vertical-align: middle;
-        background-color: transparent;
-        padding: 0 1.5rem;
-        border: 1px solid #c0a588;
-        border-right: 4px solid #c0a588;
-        border-bottom: 4px solid #c0a588;
-        text-decoration: none;
-        color: #072727;
-        background-color: #dbbc9a;
-        font-family: Arial;
-        font-size: 2rem;
-        transition: transform 0.2s ease-in-out;
-        width: 100%;
-        height: 5rem; }
-        .settings-main-delete-content-inputs button:hover {
-          cursor: pointer; }
-        .settings-main-delete-content-inputs button:focus {
-          transform: translateY(0.1rem); }
-      .settings-main-delete-content-inputs .input-delete-checkbox {
+      .settings-main-delete-content-inputs {
         display: flex;
-        flex-direction: row-reverse;
-        width: 100%;
-        margin: 1rem 0; }
-        .settings-main-delete-content-inputs .input-delete-checkbox input {
-          width: 2rem;
-          margin: 0 1rem; }
+        flex-wrap: wrap;
+        max-width: 51rem;
+        margin: 0 auto; }
+        @media only screen and (max-width: 37.5em) {
+          .settings-main-delete-content-inputs {
+            margin-bottom: 1rem; }
+            .settings-main-delete-content-inputs .input-delete {
+              margin: 0;
+              width: 25rem; } }
+        .settings-main-delete-content-inputs button {
+          vertical-align: middle;
+          background-color: transparent;
+          padding: 0 1.5rem;
+          border: 1px solid #c0a588;
+          border-right: 4px solid #c0a588;
+          border-bottom: 4px solid #c0a588;
+          text-decoration: none;
+          color: #072727;
+          background-color: #dbbc9a;
+          font-family: Arial;
+          font-size: 2rem;
+          transition: transform 0.2s ease-in-out;
+          width: 100%;
+          margin-top: 1.5rem;
+          max-width: 50rem;
+          height: 5rem; }
+          @media only screen and (max-width: 37.5em) {
+            .settings-main-delete-content-inputs button {
+              width: 120%;
+              margin-left: -2.4rem; } }
+          .settings-main-delete-content-inputs button:hover {
+            cursor: pointer; }
+          .settings-main-delete-content-inputs button:focus {
+            transform: translateY(0.1rem); }
+        .settings-main-delete-content-inputs .input-delete-checkbox {
+          display: flex;
+          flex-direction: row-reverse;
+          width: 100%;
+          margin: 1rem 0; }
+          @media only screen and (max-width: 37.5em) {
+            .settings-main-delete-content-inputs .input-delete-checkbox {
+              margin: 0;
+              margin-top: 1rem;
+              text-align: start;
+              width: 25rem; } }
+          .settings-main-delete-content-inputs .input-delete-checkbox input {
+            width: 2rem;
+            margin: 0 1rem; }
+            @media only screen and (max-width: 37.5em) {
+              .settings-main-delete-content-inputs .input-delete-checkbox input {
+                width: 3rem; } }
       .settings-main-delete-content-input {
         text-align: center;
         margin: 0 auto; }
@@ -2123,6 +2187,13 @@ body {
           -webkit-transition: text-indent 0.2s;
           text-indent: 2rem;
           color: #072727; }
+          @media only screen and (max-width: 37.5em) {
+            .settings-main-help-content-faq .faq-heading {
+              font-size: 1.6rem; }
+              .settings-main-help-content-faq .faq-heading-long-title {
+                max-width: 25rem;
+                text-indent: 0;
+                padding-left: 2rem; } }
         .settings-main-help-content-faq .faq-arrow {
           width: 1rem;
           height: 1rem;
@@ -2139,6 +2210,9 @@ body {
           right: 2.7rem;
           -webkit-transform: rotate(45deg);
           transform: rotate(45deg); }
+          @media only screen and (max-width: 37.5em) {
+            .settings-main-help-content-faq .faq-arrow-long-title {
+              top: -5.5rem; } }
         .settings-main-help-content-faq .faq-text {
           font-weight: 400;
           color: rgba(7, 39, 39, 0.5);
@@ -2193,7 +2267,7 @@ body {
       .settings-main-personalizations-content-switch input.check-toggle-round-flat:checked ~ .on {
         color: rgba(255, 255, 255, 0.75); }
       .settings-main-personalizations-content-switch input.check-toggle-round-flat:checked + label:after {
-        margin-left: 44px; }
+        margin-left: 4.1rem; }
       .settings-main-personalizations-content-switch input.check-toggle-round-flat + label {
         padding: 2px;
         width: 97px;

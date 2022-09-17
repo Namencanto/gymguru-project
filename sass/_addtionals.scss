@@ -1,7 +1,6 @@
-.btn--white {
+@mixin btn-white-dark {
   @media only screen and (max-width: $bp-small) {
     font-size: 2.2rem;
-    font-weight: 400;
     border: #eb699e solid 0.3rem;
   }
   font-weight: 300;
@@ -17,33 +16,26 @@
   text-align: center;
   transition: ease-in all 0.5s;
   &:hover {
-    background: #fff;
-    color: #eb699e;
     transition: ease-in all 0.5s;
   }
 }
 
-.btn--dark {
+.btn--white {
   @media only screen and (max-width: $bp-small) {
-    font-size: 2.2rem;
-    border: #eb699e solid 0.3rem;
+    font-weight: 400;
   }
-  font-weight: 300;
-  font-size: 1.7rem;
-  color: $color-logo;
-  list-style-type: none;
-  text-decoration: none;
-  border: #eb699e solid 0.2rem;
-  padding: 1.3rem 5rem;
-  display: inline-block;
-  text-align: center;
-  align-content: start;
-  text-align: center;
-  transition: ease-in all 0.5s;
+  @include btn-white-dark;
+  &:hover {
+    background: #fff;
+    color: #eb699e;
+  }
+}
+
+.btn--dark {
+  @include btn-white-dark;
   &:hover {
     background: #000;
     color: #fff;
-    transition: ease-in all 0.5s;
   }
 }
 

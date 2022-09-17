@@ -1,7 +1,19 @@
 .user-account__panel {
+  .active-tab {
+    &:hover {
+      border-left: 0.75rem rgba($color-logo, 0.9) solid;
+    }
+    border-left: 0.75rem rgba($color-logo, 0.9) solid;
+  }
   &-info {
     @media only screen and (max-width: $bp-largest) {
       flex-direction: column;
+      @media only screen and (max-width: $bp-small) {
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 1rem 0;
+        margin-bottom: 2.5rem;
+      }
     }
     grid-row: 1;
 
@@ -58,23 +70,23 @@
         align-items: center;
         text-align: start;
 
-        &:focus {
-          outline: none;
-        }
-
         &:hover {
+          @media only screen and (max-width: $bp-small) {
+            background-color: transparent;
+          }
           cursor: pointer;
           border-left: 0.75rem rgba($color-logo, 0.5) solid;
           background-color: rgba($color-logo, 0.25);
         }
         &:focus {
-          border-left: 0.75rem rgba($color-logo, 0.9) solid;
+          outline: none;
+          // border-left: 0.75rem rgba($color-logo, 0.9) solid;
         }
 
         & h4 {
           @media only screen and (max-width: $bp-small) {
-            margin-right: auto;
-            width: 12.5rem;
+            // margin-right: auto;
+            // width: 12.5rem;
           }
           margin-right: auto;
           text-transform: uppercase;
@@ -82,7 +94,8 @@
         }
         & i {
           @media only screen and (max-width: $bp-small) {
-            margin-left: auto;
+            margin-left: 2rem;
+            // margin-left: auto;
           }
           font-style: normal;
           margin: 0 1rem;

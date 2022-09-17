@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <%- include('../partials/head'); %>
@@ -5,9 +6,7 @@
   </head>
 
   <body class="user-account-page">
-    <div class="loo">
-    <%- include('../partials/header'); %>
-  </div>
+    <div class="header__subpage"><%- include('../partials/header'); %></div>
     <div class="user-account ">
       <div class="user-account-box">
         <nav class="user-account__panel">
@@ -165,6 +164,7 @@
             <div class="todo-container">
               <h3>Add new goal</h3>
               <ul id="listOfItemsID" class="todo-items"></ul>
+              <div class="todoData hidden"><%=userData.todoList%></div>
               <form id="formToAddItemsID" class="todo-add">
                 <div class="todo-inputs">
                   <input
@@ -172,6 +172,9 @@
                     type="text"
                     name="item"
                     placeholder="What do you need to do?"
+                    pattern="[^'{}\x22]+"
+                    title="input must not contain this characters: ' { }"
+                    maxlength="80"
                     required
                   />
                   <button class="todo-button" type="submit">Add goal</button>
@@ -386,8 +389,8 @@
                       <div class="settings-main-help-content-faq">
                         <input id='faq-c' type='checkbox'>
                         <label for='faq-c'>
-                          <p class="faq-heading">Pellentesque scelerisque?</p>
-                          <div class='faq-arrow'></div>
+                          <p class="faq-heading faq-heading-long-title">Pellentesque scelerisque amet consectetur adipisicing elit?</p>
+                          <div class='faq-arrow faq-arrow-long-title'></div>
                             <p class="faq-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi voluptatibus accusamus quod repudiandae! Fuga asperiores ad ab recusandae odio inventore eveniet nisi placeat laborum. Est rerum fugit unde omnis eaque.
                             Hic rem voluptatum voluptas, minima maxime excepturi in provident labore eaque quam quisquam, nesciunt atque eligendi perspiciatis iure voluptates nulla. </p>
                         </label>
@@ -395,8 +398,8 @@
                       <div class="settings-main-help-content-faq">
                         <input id='faq-d' type='checkbox'>
                         <label for='faq-d'>
-                          <p class="faq-heading">Sed vitae nibh in euismod ve?</p>
-                          <div class='faq-arrow'></div>
+                          <p class="faq-heading  faq-heading-long-title">Sed vitae nibh in euismod ve st rerum fugit unde omnis?</p>
+                          <div class='faq-arrow faq-arrow-long-title'></div>
                             <p class="faq-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis rerum tempore cupiditate tenetur, quo porro accusamus eos voluptatum voluptatibus suscipit quod corrupti earum eaque a, aliquid natus odit quia provident. perspiciatis iure voluptates nulla aliquam possimus iusto repellendus reprehenderit, aliquid ipsum.</p>
                         </label>
                   </div>    
@@ -439,5 +442,7 @@
       
       </div>
     </div>
+
+    <div style="display: none;" class="account-id"><%=userData._id%></div>
   </body>
 </html>
