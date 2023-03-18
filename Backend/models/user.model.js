@@ -49,11 +49,6 @@ const UserSchema = new Schema({
   },
 });
 
-/**
- *  Here we are creating and setting an id property and 
-    removing _id, __v, and the password hash which we do not need 
-    to send back to the client.
- */
 UserSchema.set("toJSON", {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString();
@@ -64,10 +59,6 @@ UserSchema.set("toJSON", {
   },
 });
 
-/**
- * 1. The userSchema.plugin(uniqueValidator) method won’t let duplicate email id to be stored in the database.
- * 2. The unique: true property in email schema does the internal optimization to enhance the performance.
- */
 UserSchema.plugin(uniqueValidator, { message: "Email already in use." });
 
 const User = mongoose.model("user", UserSchema);

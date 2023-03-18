@@ -6,7 +6,10 @@
   "scripts": {
     "sass-watch": "node-sass --no-source-map --watch sass/main.scss public/css/style.css",
     "nodemon-watch": "nodemon server.js -e *",
-    "start": "npm-run-all --parallel sass-watch nodemon-watch"
+    "sass-build": "node-sass --no-source-map sass/main.scss public/css/style.css",
+    "nodemon-build": "nodemon server.js",
+    "start": "npm-run-all --parallel sass-watch nodemon-watch",
+    "build": "npm-run-all sass-build nodemon-build"
   },
   "keywords": [
     "gym"
