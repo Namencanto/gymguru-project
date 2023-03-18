@@ -1,0 +1,227 @@
+@mixin account-button {
+  vertical-align: middle;
+  background-color: transparent;
+  padding: 0 1.5rem;
+  border: 1px solid #c0a588;
+  border-right: 4px solid #c0a588;
+  border-bottom: 4px solid #c0a588;
+  text-decoration: none;
+  color: rgb(7, 39, 39);
+  background-color: #dbbc9a;
+  font-family: Arial;
+  font-size: 2rem;
+  transition: (transform 0.2s ease-in-out);
+
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    transform: translateY(0.1rem);
+  }
+}
+
+@mixin input-settings {
+  text-align: center;
+  margin: 0 auto;
+  & input {
+    margin: auto;
+    margin: 0rem 0 0.5rem;
+    width: 25rem;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgb(7, 39, 39);
+    background-color: #dbbc9a;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  & label {
+    color: rgb(7, 39, 39);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.user-account {
+  -webkit-tap-highlight-color: transparent;
+  @media only screen and (max-width: $bp-medium) {
+  }
+  display: grid;
+  font-size: 2rem;
+  grid-template-rows: repeat(7, 15rem);
+  grid-template-columns: repeat(6, 1fr);
+  &-box {
+    @media only screen and (max-width: $bp-largest) {
+      grid-column: 1 / 7;
+      grid-row: 1 / 8;
+      margin: 2.5rem 2.5rem 0 2.5rem;
+      @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+      }
+    }
+    grid-column: 2 / 6;
+    grid-row: 2 / 8;
+    display: flex;
+
+    box-shadow: 0px 0px 20px -5px rgba(66, 68, 90, 0.5);
+  }
+  &__panel {
+    @media only screen and (max-width: 1650px) {
+      width: 35%;
+      @media only screen and (max-width: $bp-largest) {
+        width: 30%;
+        @media only screen and (max-width: $bp-small) {
+          grid-row: 1;
+          width: 100%;
+          border: none;
+
+          grid-template-rows: min-content 1fr min-content;
+        }
+      }
+    }
+    display: grid;
+
+    grid-template-rows: 1fr 60rem 1fr;
+    width: 25%;
+
+    background-color: #e7c6a3;
+    border-right: #777 1px dashed;
+  }
+  &__main {
+    @media only screen and (max-width: $bp-small) {
+      width: 100%;
+      border-top: 1px dashed #000;
+      grid-template-rows: 1fr min-content;
+    }
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 75rem;
+    width: 80%;
+    background-color: #f1cfaa;
+  }
+}
+
+//main text setup for all tabs
+.user-account__main {
+  &-text {
+    grid-row: 1;
+    grid-column: 1 / 6;
+    text-align: center;
+    width: 100%;
+
+    background-color: #eccaa8;
+    border-bottom: #777 1px dashed;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    & h1 {
+      @media only screen and (max-width: $bp-small) {
+        font-size: 4rem;
+        text-align: center;
+      }
+      font-size: 5rem;
+      font-weight: 400;
+      text-shadow: 4px 4px 6px rgba(66, 68, 90, 0.2);
+    }
+  }
+
+  &-content {
+    grid-row: 2;
+    grid-column: 1 / 6;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: auto 0 auto 0;
+    height: 100%;
+    justify-content: space-between;
+    //   background-color: #d0b88a;
+    & h2 {
+      @media only screen and (max-width: $bp-small) {
+        font-size: 3rem;
+      }
+      text-align: center;
+      align-self: center;
+      margin-top: 3rem;
+      font-size: 4rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.loo {
+  @media only screen and (max-width: $bp-medium) {
+    .header {
+      @media only screen and (max-width: $bp-small) {
+        padding: 0;
+      }
+      &__navbar {
+        flex-wrap: wrap !important;
+        justify-content: center;
+        margin: auto;
+        & li {
+          @media only screen and (max-width: $bp-small) {
+            font-size: 2.6rem;
+          }
+          margin: 0 auto;
+        }
+      }
+      &__logo {
+        @media only screen and (max-width: $bp-small) {
+          font-size: 6rem;
+          @media only screen and (max-width: 200px) {
+            font-size: 4rem;
+          }
+          & a {
+            padding: 0;
+            margin: 0;
+          }
+        }
+        font-size: 4rem;
+      }
+      .btn-search:focus ~ .input-search {
+        @media only screen and (max-width: $bp-small) {
+          width: 40rem;
+          @media only screen and (max-width: 400px) {
+            width: 30rem;
+          }
+        }
+      }
+      .input-search {
+        @media only screen and (max-width: $bp-small) {
+          &,
+          &::placeholder {
+            font-size: 2rem;
+          }
+        }
+        &:focus {
+          @media only screen and (max-width: $bp-small) {
+            width: 40rem;
+            @media only screen and (max-width: 400px) {
+              width: 30rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .fa-search {
+    @media only screen and (max-width: $bp-small) {
+      font-size: 2.5rem;
+      transform: translateY(1rem);
+    }
+  }
+}
+
+@import "panel.scss";
+
+@import "discount-panel.scss";
+@import "products-panel.scss";
+@import "goals-panel.scss";
+@import "settings.scss";

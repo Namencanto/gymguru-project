@@ -1,4 +1,51 @@
 .header {
+  // Other than index header style
+  &__subpage {
+    @media only screen and (max-width: $bp-medium) {
+      & a {
+        font-size: 55%;
+      }
+      & h2 {
+        margin-top: -2rem;
+      }
+      @media only screen and (max-width: $bp-small) {
+        .header__logo {
+          // margin-top: -5rem;
+          margin-bottom: -1.5rem;
+          & a {
+            font-size: 65%;
+          }
+        }
+        .header__navbar {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          flex-direction: row;
+          // flex-direction: column;
+        }
+        & li {
+          margin: 0 !important;
+        }
+        & h2 {
+          margin-top: -4rem;
+        }
+
+        & a {
+          text-align: center;
+          font-size: 50%;
+        }
+
+        .header__sign-btn {
+          transform: scale(0.5);
+        }
+        .btn-search:focus ~ .input-search,
+        .input-search:focus {
+          width: 125vw;
+        }
+      }
+    }
+  }
+
   @media only screen and (max-width: $bp-small) {
     flex-direction: column;
     justify-content: center;
@@ -47,6 +94,7 @@
         margin-right: 2rem;
       }
       & a {
+        text-align: center;
         color: #000;
         text-decoration: none;
         display: block;

@@ -1,0 +1,72 @@
+$success__primary: #3dc480;
+$success__secondary: #b8babb;
+
+.success-message {
+  visibility: hidden;
+  backdrop-filter: blur(5px) brightness(50%);
+  text-align: center;
+  width: 500vh;
+  height: 500vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: scale(2);
+  transform-origin: 100%;
+  z-index: 1000;
+  transition: opacity 1s;
+  &-opacity {
+    opacity: 0;
+  }
+  .success-message__icon {
+    @media only screen and (max-width: $bp-small) {
+      margin-top: 90vh;
+    }
+    margin-top: 110vh;
+    max-width: 10rem;
+  }
+
+  .success-message__title {
+    color: $success__primary;
+    transform: translateY(25px);
+    opacity: 0;
+    transition: all 200ms ease;
+
+    .active & {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .success-message__content {
+    color: $success__secondary;
+    transform: translateY(25px);
+    opacity: 0;
+    transition: all 200ms ease;
+    transition-delay: 50ms;
+
+    .active & {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .icon-checkmark {
+    circle {
+      fill: $success__primary;
+      transform-origin: 50% 50%;
+      transform: scale(0);
+      transition: transform 200ms cubic-bezier(0.22, 0.96, 0.38, 0.98);
+    }
+    path {
+      transition: stroke-dashoffset 350ms ease;
+      transition-delay: 100ms;
+    }
+
+    .active & {
+      circle {
+        transform: scale(1);
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
-.btn--white {
+@mixin btn-white-dark {
   @media only screen and (max-width: $bp-small) {
     font-size: 2.2rem;
-    font-weight: 400;
     border: #eb699e solid 0.3rem;
   }
   font-weight: 300;
@@ -17,33 +16,26 @@
   text-align: center;
   transition: ease-in all 0.5s;
   &:hover {
-    background: #fff;
-    color: #eb699e;
     transition: ease-in all 0.5s;
   }
 }
 
-.btn--dark {
+.btn--white {
   @media only screen and (max-width: $bp-small) {
-    font-size: 2.2rem;
-    border: #eb699e solid 0.3rem;
+    font-weight: 400;
   }
-  font-weight: 300;
-  font-size: 1.7rem;
-  color: $color-logo;
-  list-style-type: none;
-  text-decoration: none;
-  border: #eb699e solid 0.2rem;
-  padding: 1.3rem 5rem;
-  display: inline-block;
-  text-align: center;
-  align-content: start;
-  text-align: center;
-  transition: ease-in all 0.5s;
+  @include btn-white-dark;
+  &:hover {
+    background: #fff;
+    color: #eb699e;
+  }
+}
+
+.btn--dark {
+  @include btn-white-dark;
   &:hover {
     background: #000;
     color: #fff;
-    transition: ease-in all 0.5s;
   }
 }
 
@@ -185,16 +177,16 @@
 }
 
 //checkbox styling
-input[type="checkbox"] + label {
+#login-checkbox-remember + label {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-input[type="checkbox"] {
+#login-checkbox-remember {
   display: none;
 }
 
-input[type="checkbox"] + label:before {
+#login-checkbox-remember + label:before {
   @media only screen and (max-width: $bp-small) {
     width: 5rem;
     height: 1.5rem;
@@ -217,18 +209,42 @@ input[type="checkbox"] + label:before {
   margin-right: 0.25rem;
 }
 
-input[type="checkbox"] + label:active:before {
+#login-checkbox-remember + label:active:before {
   transform: scale(0);
 }
 
-input[type="checkbox"]:checked + label:before {
+#login-checkbox-remember:checked + label:before {
   background-color: #eb699e;
   border-color: #eb699e;
   color: #fff;
 }
 
-input[type="checkbox"]:checked:disabled + label:before {
+#login-checkbox-remember:checked:disabled + label:before {
   transform: scale(1);
   background-color: #f7c28f;
   border-color: #f7c28f;
+}
+
+// Invalid password/email message
+.invalidInput {
+  color: crimson;
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-bottom: -1.8rem;
+  display: inline-block;
+  & p {
+    margin-left: 0.5rem;
+  }
+  & i {
+    font-size: 1.6rem;
+  }
+}
+
+.invalidAccountInput {
+  text-align: center;
+  margin: auto auto -1.2rem auto;
+}
+
+.numberInUse {
+  margin: 0;
 }

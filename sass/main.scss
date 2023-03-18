@@ -1,15 +1,23 @@
 @import "base.scss";
-@import "footer.scss";
 @import "header.scss";
-@import "banner.scss";
-@import "offers.scss";
-@import "discount.scss";
-@import "opinion.scss";
-@import "contact.scss";
+@import "./mainpage-assets/footer.scss";
+@import "./mainpage-assets/banner";
+@import "./mainpage-assets/offers.scss";
+@import "./mainpage-assets/discount.scss";
+@import "./mainpage-assets/opinion.scss";
+@import "./mainpage-assets/contact.scss";
 @import "addtionals.scss";
 
 @import "about.scss";
 
 @import "offert.scss";
 
-@import "user.scss";
+@import "login.scss";
+
+@import "./account/account.scss";
+
+@import "logout.scss";
+
+@import "404error.scss";
+
+@import "flash-message.scss";

@@ -1,11 +1,16 @@
-<%- include('../partials/head'); %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+    <script defer src="js/login.js"></script>
+    <script defer src="js/autotab.js"></script>
+    <script defer src="js/slider.js"></script>
+    <script defer src="js/flash-message.js"></script>
+  </head>
   <body class="container">
     <main class="container-main">
-    <%- include('../partials/login'); %>
-
-   
-      <%- include('../partials/header'); %>
-
+      <%- include('../partials/login'); %> <%- include('../partials/header'); %>
+      <%- include('../partials/succesfull'); %>
       <section class="banner">
         <article class="banner-main">
           <h1>Gym and fitness</h1>
@@ -31,7 +36,9 @@
         <span>CHECKOUT OUR FITNESS CLASESS</span>
         <div class="offers__box">
           <div class="offers__box-1">
-            <i><img src="assets/icon/icon1.png" alt="heavy weight class icon" /></i>
+            <i
+              ><img src="assets/icon/icon1.png" alt="heavy weight class icon"
+            /></i>
             <h4>
               HEAVY WEIGHT
               <br />
@@ -39,7 +46,9 @@
             </h4>
           </div>
           <div class="offers__box-2">
-            <i><img src="assets/icon/icon2.png" alt="body building class icon" /></i>
+            <i
+              ><img src="assets/icon/icon2.png" alt="body building class icon"
+            /></i>
             <h4>
               BODY BUILDING
               <br />
@@ -47,7 +56,9 @@
             </h4>
           </div>
           <div class="offers__box-3">
-            <i><img src="assets/icon/icon3.png" alt="weight loss class icon" /></i>
+            <i
+              ><img src="assets/icon/icon3.png" alt="weight loss class icon"
+            /></i>
             <h4>
               WEIGHT LOSS
               <br />
@@ -55,7 +66,7 @@
             </h4>
           </div>
         </div>
-        <a class="btn--dark" href="gym-offert.html">Read More</a>
+        <a class="btn--dark" href="/offert">Read More</a>
       </div>
     </section>
 
@@ -71,7 +82,7 @@
           it over <br />
           2000 years old. Richard McClintock, a Latin professor a
         </p>
-        <a class="btn--white" href="gym-offert.html">Read More</a>
+        <a class="btn--white" href="/offert">Read More</a>
       </div>
     </section>
 

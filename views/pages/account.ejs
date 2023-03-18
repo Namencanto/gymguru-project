@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+    <script defer src="js/account.js"></script>
+  </head>
+
+  <body class="user-account-page">
+    <div class="header__subpage"><%- include('../partials/header'); %></div>
+    <div class="user-account ">
+      <div class="user-account-box">
+        <nav class="user-account__panel">
+          <div class="user-account__panel-info">
+            <img
+              class="user-account__panel-info-avatar"
+              src="<%= userData.avatar %> "
+              alt="user avatar"
+            />
+            <div class="user-account__panel-info-text">
+              <h5><%=userData.name%> <%=userData.surname%></h5>
+              <p>
+                <%= userData.email%>
+                <!-- john.doe@example.com -->
+              </p>
+            </div>
+          </div>
+          <ul>
+            <li class="user-account__panel-discounts">
+              <button  class="discounts-option option">
+                <i>💰</i>
+                <h4>Discounts</h4>
+              </button>
+            </li>
+            <li class="user-account__panel-products">
+              <button class="products-option option">
+                <i>💪</i>
+                <h4>Products</h4>
+              </button>
+            </li>
+            <li class="user-account__panel-goals">
+              <button class="goals-option option">
+                <i>🎯</i>
+                <h4>Goals</h4>
+              </button>
+            </li>
+            <li class="user-account__panel-settings">
+              <button class="settings-option option">
+                <i>⚙️</i>
+                <h4>Settings</h4>
+              </button>
+            </li>
+          </ul>
+          <div class="user-account__panel-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/Namencanto"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="user-account__main hidden discounts">
+          <div class="user-account__main-text">
+            <h1>Save with us! 💰</h1>
+          </div>
+          <div class="user-account__main-content">
+            <h2>Your discounts codes:</h2>
+            <div class="promo-container">
+              <div class="promo-box">
+                <div class="promo-value">
+                  <h3>10%</h3>
+                  <p>Coupon</p>
+                </div>
+                <div class="promo-title">
+                  <h3>
+                    25% nulla mollitia veniam maiores quo eos molestias
+                    accusamus
+                  </h3>
+                  <p>4441 recent uses</p>
+                </div>
+                <div class="promo-code">
+                  <a href="#">91MMSi12</a>
+                </div>
+              </div>
+
+              <div class="promo-box">
+                <div class="promo-value">
+                  <h3>15%</h3>
+                  <p>Coupon</p>
+                </div>
+                <div class="promo-title">
+                  <h3>15% emo, aliquid totam accusamus autem ut</h3>
+                  <p>3217 recent uses</p>
+                </div>
+                <div class="promo-code">
+                  <a href="#">PLSO1221</a>
+                </div>
+              </div>
+
+              <div class="promo-box">
+                <div class="promo-value">
+                  <h3>35%</h3>
+                  <p>Coupon</p>
+                </div>
+                <div class="promo-title">
+                  <h3>35% Lorem ipsum dolor sit amet consectetur</h3>
+                  <p>4277 recent uses</p>
+                </div>
+                <div class="promo-code">
+                  <a href="#">IIKSJ122</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main> 
+
+        <main class="user-account__main hidden products">
+          <div class="user-account__main-text">
+            <h1>Good choice 👌 </h1>
+          </div>
+          <div class="user-account__main-content">
+            <h2>Your products:</h2>
+            <div class="products-container">
+              <div class="products-box">
+                <div class="products-title">
+                  <h3>
+                    3 months nulla mollitia veniam maiores quo eos molestias
+                    accusamus
+                  </h3>
+                  <p>valid until: 31-07-2022</p>
+                </div>
+                <div class="products-facture">
+                <p>Facture, click to download (.pdf)</p>
+                  <a href="/assets/documents/loremipsum.pdf" download="loremipsum">Facture nr. 2721</a>
+                </div>
+              </div>
+              <div class="products-box">
+              <div class="products-title">
+                <h3>
+                  6 months mollitia maiores quo eos molestias
+                  accusamus
+                </h3>
+                <p>valid until: 31-10-2022</p>
+              </div>
+              <div class="products-facture">
+              <p>Facture, click to download (.pdf)</p>
+                <a href="/assets/documents/loremipsum.pdf" download="loremipsum">Facture nr. 3212</a>
+              </div>
+            </div>
+            </div>
+            <a class="offert-redirect" href="/offert">click here to buy other package</a>
+          </div>
+        </main>
+
+        <main class="user-account__main hidden goals">
+          <div class="user-account__main-text">
+            <h1>Persistence is key to success ⚖️</h1>
+          </div>
+          <div class="user-account__main-content">
+            <h2>Your goals:</h2>
+
+            <div class="todo-container">
+              <h3>Add new goal</h3>
+              <ul id="listOfItemsID" class="todo-items"></ul>
+              <div class="todoData hidden"><%=userData.todoList%></div>
+              <form id="formToAddItemsID" class="todo-add">
+                <div class="todo-inputs">
+                  <input
+                    id="todo-input"
+                    type="text"
+                    name="item"
+                    placeholder="What do you need to do?"
+                    pattern="[^'{}\x22]+"
+                    title="input must not contain this characters: ' { }"
+                    maxlength="80"
+                    required
+                  />
+                  <button class="todo-button" type="submit">Add goal</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </main>
+
+        <main class="user-account__main hidden settings">
+            <div class="user-account__main-text">
+              <h1>Customize the page as you want ⚙️</h1>
+            </div>
+  
+            <div class="user-account__main-content ">
+              <h2>Settings</h2>
+              <div class="settings-container">
+                <ul class="settings-tab-container">
+                  <li class="settings-tab settings-tab-referrals">Referrals</li>
+                  <li class="settings-tab settings-tab-delete">
+                    Delete account
+                  </li>
+                  <li class="settings-tab settings-tab-account">Account settings</li>
+                  <li class="settings-tab settings-tab-help">Help</li>
+                  <li class="settings-tab settings-tab-personalizations">
+                    Personalizations
+                  </li>
+                </ul>
+              </div>           
+              <div class="settings-main"> 
+  
+            <!-- TABS START -->
+  
+              <!-- REFERRALS TAB -->   
+                <div class="settings-main-referrals all-tab hidden">
+                  <h3>Your referrals:</h3>
+                  <div class="settings-main-referrals-content">
+                    <ul>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                      <li>Referral: 124124</li>
+                    </ul>
+                  </div>
+                </div>
+  
+              <!-- NOTIFICATIONS TAB -->   
+                <div class="settings-main-delete all-tab hidden">
+                  <h3>Delete account:</h3>
+                  <div class="settings-main-delete-content">
+                    <div class="settings-main-delete-content-inputs delete-inputs">
+                      <form name="deleteAccount" action="/users/userDelete?_method=DELETE" method="post">
+                    <div
+                        class="settings-main-delete-content-input input-delete"
+                      >
+                        <label for="email">Email:</label>
+                        <input 
+                        type="text" name="email" id="email" required/>
+                      </div>
+                      <div
+                      class="settings-main-delete-content-input input-delete"
+                    >
+                      <label for="password">Password:</label>
+                      <input 
+                      type="password" name="password" id="password" required/>
+                      <p class="invalidInput invalidDeleteAccountPassword hidden "><i class="fas fa-exclamation-triangle"></i> Invalid Password/Email</p>
+                    </div>
+                    <div
+                      class="settings-main-delete-content-input input-delete-checkbox"
+                    >
+                      <label for="name">My account will be <b>PERMANENTLY</b> deleted.</label>
+                      <input 
+                      type="checkbox" name="" id="name" required/>
+                    </div>
+                    <button type="submit">Delete account</button>
+                  </form>
+                    </div>
+                  </div>
+                </div>
+              <!-- TODO LATER -->
+  
+              <!-- ACCOUNT TAB -->
+                <div class="settings-main-account all-tab hidden">            
+                    <h3>Account settings:</h3>
+                  <div class="settings-main-account-content">
+                    
+                    <div class="settings-main-account-content-avatar">
+                      <label
+                        class="settings-main-account-content-avatar-label"
+                        for="avatarek"
+                      >
+                        <span class="glyphicon glyphicon-camera"></span>
+                        <span>Change Image</span>
+                      </label>
+                      <form enctype="multipart/form-data" action="/upload" method="post">
+                      <input id="avatarek" type="file" name="avatarek" onchange="this.form.submit();"/>
+                    </form>
+                    
+                      <img 
+                      src="<%= userData.avatar %> " 
+                      id="output" />
+                    </div>
+                    <div class="settings-main-account-content-inputs">
+                      <form class="settings-main-account-content-inputs" name="updateAccount" action="/users/userUpdate?_method=PUT" method="post">
+                      <div class="settings-main-account-content-input input-name">
+                        <label for="userName">Name:</label>
+                        <input type="text" name="userName" id="userName" value="<%=userData.name%>"/>
+                      </div>
+                      <div
+                        class="settings-main-account-content-input input-surname"
+                      >
+                        <label for="surname">Surname:</label>
+                        <input type="text" name="surName" id="surname" value="<%=userData.surname%>" />
+                      </div>
+                      <div
+                        class="settings-main-account-content-input input-old-password"
+                      >
+                        <label for="oldPassword">Password:</label>
+                        <input type="password" name="password" id="oldPassword" required/>
+                      </div>
+                      <div
+                        class="settings-main-account-content-input input-password"
+                      >
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" name="newPassword" id="newPassword" />
+                      </div>
+                      <div
+                        class="settings-main-account-content-input input-email hidden"
+                      >
+                        <label for="userOldEmail">Old Email:</label>
+                        <input 
+                        value="<%= userData.email%>"
+                        type="email" name="email" id="userOldEmail" readonly required/>
+                      </div>
+                      <div
+                      class="settings-main-account-content-input input-email"
+                    >
+                      <label for="userNewEmail">Email:</label>
+                      <input 
+                      value="<%= userData.email%>" type="email" name="newEmail" id="userNewEmail" />
+                    </div>
+                    <div
+                        class="settings-main-account-content-input input-number hidden "
+                      >
+                        <label for="userOldNumber">Old Phone Number:</label>
+                        <input 
+                        value="<%= userData.phoneNumber%>"
+                        pattern="[+][0-9]{1,4} [0-9]{4,20}" type="tel" name="number" id="userOldNumber" readonly required/>
+                      </div>
+                      <div
+                        class="settings-main-account-content-input input-number "
+                      >
+                        <label for="userNewNumber">Phone Number:</label>
+                        <input 
+                        value="<%= userData.phoneNumber%>"
+                        pattern="[+][0-9]{1,4} [0-9]{4,20}" type="tel" name="newNumber" id="userNewNumber"  />
+                      </div>
+
+                      <p class="invalidInput invalidAccountInput invalidAccountPassword hidden "><i class="fas fa-exclamation-triangle"></i>
+                        Invalid Password
+                      </p>
+                      <p class="invalidInput invalidAccountInput invalidAccountNumber hidden "><i class="fas fa-exclamation-triangle"></i>
+                        This number has already declared
+                      </p>
+                      <p class="invalidInput invalidAccountInput invalidAccountEmail hidden "><i class="fas fa-exclamation-triangle"></i>
+                        This email has already declared
+                      </p>
+                      <p class="invalidInput invalidAccountInput invalidFileInput hidden "><i class="fas fa-exclamation-triangle"></i>
+                        Invalid file type, you can set only (.jpg/.png/.jfif/.gif)
+                      </p>
+                      
+                      
+
+                      <button type="submit">Submit any changes</button>
+                    </form>
+                    </div>
+                    <!-- <form enctype="multipart/form-data" action="/upload" method="post">
+                      <input id="avatarek" type="file" name="avatarek" />
+                      <button type="submit"></button>
+                    </form> -->
+                  
+                </div>
+              </div>
+              <!-- HELP TAB -->
+                <div class="settings-main-help all-tab hidden">
+                  <h3>FAQ:</h3>
+                  <p class="settings-main-help-paragraf">If you don't find answer for your question, <a href="/#contact">write</a> or <a href="/about">tell</a> to us</p>
+                  <div class="settings-main-help-content">
+                    <div class="settings-main-help-content-faq">
+                      <input id='faq-a' type='checkbox'>
+                      <label for='faq-a'>
+                        <p class="faq-heading">Lorem ipsum dolor sit?</p>
+                        <div class='faq-arrow'></div>
+                          <p class="faq-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur fringilla orci vel maximus. Aliquam et augue suscipit, tempus neque quis, finibus lacus. Suspendisse mattis, diam et volutpat hendrerit, sem lorem convallis ligula, vel molestie ex ex quis massa. In nunc ligula, vestibulum ut cursus non, dapibus nec diam. Suspendisse in libero quis mi laoreet finibus.</p>
+                      </label>
+                  </div>
+                      <div class="settings-main-help-content-faq">
+                        <input id='faq-b' type='checkbox'>
+                        <label for='faq-b'>
+                          <p class="faq-heading">Vivamus sit amet ipsum ?</p>
+                          <div class='faq-arrow'></div>
+                            <p class="faq-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat blanditiis fugiat quaerat tempore minus explicabo rem, minima vel magnam in, voluptatum doloremque. Deserunt ipsam voluptatum doloribus sed voluptas blanditiis quo.</p>
+                        </label>
+                  </div>
+                      <div class="settings-main-help-content-faq">
+                        <input id='faq-c' type='checkbox'>
+                        <label for='faq-c'>
+                          <p class="faq-heading faq-heading-long-title">Pellentesque scelerisque amet consectetur adipisicing elit?</p>
+                          <div class='faq-arrow faq-arrow-long-title'></div>
+                            <p class="faq-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi voluptatibus accusamus quod repudiandae! Fuga asperiores ad ab recusandae odio inventore eveniet nisi placeat laborum. Est rerum fugit unde omnis eaque.
+                            Hic rem voluptatum voluptas, minima maxime excepturi in provident labore eaque quam quisquam, nesciunt atque eligendi perspiciatis iure voluptates nulla. </p>
+                        </label>
+                  </div>
+                      <div class="settings-main-help-content-faq">
+                        <input id='faq-d' type='checkbox'>
+                        <label for='faq-d'>
+                          <p class="faq-heading  faq-heading-long-title">Sed vitae nibh in euismod ve st rerum fugit unde omnis?</p>
+                          <div class='faq-arrow faq-arrow-long-title'></div>
+                            <p class="faq-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis rerum tempore cupiditate tenetur, quo porro accusamus eos voluptatum voluptatibus suscipit quod corrupti earum eaque a, aliquid natus odit quia provident. perspiciatis iure voluptates nulla aliquam possimus iusto repellendus reprehenderit, aliquid ipsum.</p>
+                        </label>
+                  </div>    
+              </div>
+            </div>
+            
+              <!-- PERSONALIZATIONS TAB -->
+             <div class="settings-main-personalizations all-tab hidden">
+              <h3>Personalizations:</h3>
+              <div class="settings-main-personalizations-content">
+  
+                <h4>Language:</h4>
+              <div class="settings-main-personalizations-content-switch">
+                <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
+                <label for="language-toggle"></label>
+                <span class="on">ENG</span>
+                <span class="off">PL</span>
+              </div>
+  
+              <h4>Dark mode:</h4>
+              <div class="settings-main-personalizations-content-switch">
+                <input id="dark-mode-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
+                <label for="dark-mode-toggle"></label>
+                <span class="on">OFF</span>
+                <span class="off">ON</span>
+              </div>
+  
+              <h4>Newsletter:</h4>
+              <div class="settings-main-personalizations-content-switch">         
+                <input id="newsletter-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
+                <label for="newsletter-toggle"></label>
+                <span class="on">OFF</span>
+                <span class="off">ON</span>
+              </div>
+            </div>
+          </div>
+            <!-- TABS  END-->
+        </main>
+
+      
+      </div>
+    </div>
+
+    <div style="display: none;" class="account-id"><%=userData._id%></div>
+  </body>
+</html>
